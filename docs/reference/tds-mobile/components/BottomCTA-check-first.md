@@ -42,6 +42,6 @@ FixedBottomCTA는 항상 화면 하단에 고정되어 표시됩니다.
 ---
 
 ## 관련 문서
-- [Single 상세 가이드](/tds-mobile/components/BottomCTA/Single/)
-- [Double 상세 가이드](/tds-mobile/components/BottomCTA/Double/)
-- [FixedBottomCTA 가이드](/tds-mobile/components/BottomCTA/fixed-bottom-cta/)
+- [Single 상세 가이드](https://tossmini-docs.toss.im/tds-mobile/components/BottomCTA/Single/)
+- [Double 상세 가이드](https://tossmini-docs.toss.im/tds-mobile/components/BottomCTA/Double/)
+- [FixedBottomCTA 가이드](https://tossmini-docs.toss.im/tds-mobile/components/BottomCTA/fixed-bottom-cta/)

@@ -10,8 +10,8 @@ The Dialog component is a modal interface used to convey important information o
 
 | Type | Purpose | Documentation |
 |------|---------|---|
-| **AlertDialog** | Single-button confirmation for notifications like task completion or status updates | [AlertDialog docs](/tds-mobile/components/Dialog/alert-dialog/) |
-| **ConfirmDialog** | Two-button interface for user decisions before executing critical actions | [ConfirmDialog docs](/tds-mobile/components/Dialog/confirm-dialog/) |
+| **AlertDialog** | Single-button confirmation for notifications like task completion or status updates | [AlertDialog docs](https://tossmini-docs.toss.im/tds-mobile/components/Dialog/alert-dialog/) |
+| **ConfirmDialog** | Two-button interface for user decisions before executing critical actions | [ConfirmDialog docs](https://tossmini-docs.toss.im/tds-mobile/components/Dialog/confirm-dialog/) |
 
 ## Component Structure
 

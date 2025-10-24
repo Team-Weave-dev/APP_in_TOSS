@@ -16,9 +16,9 @@
 
 | 훅 | 특징 | 활용 사례 | 참고 |
 |---|---|---|---|
-| **useDialog** | "사용자의 주의가 필요한 중요한 정보나 결정을 요구" | • 주요 작업 확인 • 경고 메시지 • 명시적 선택 요구 | [useDialog 문서](/tds-mobile/hooks/OverlayExtension/use-dialog/) |
-| **useToast** | "일시적인 알림이나 피드백 표시" | • 완료 알림 • 오류 메시지 • 상태 피드백 | [useToast 문서](/tds-mobile/hooks/OverlayExtension/use-toast/) |
-| **useBottomSheet** | "추가 정보나 작업을 화면 하단에서 표시" | • 상세 정보 • 추가 옵션 • 복잡한 상호작용 | [useBottomSheet 문서](/tds-mobile/hooks/OverlayExtension/use-bottom-sheet/) |
+| **useDialog** | "사용자의 주의가 필요한 중요한 정보나 결정을 요구" | • 주요 작업 확인 • 경고 메시지 • 명시적 선택 요구 | [useDialog 문서](https://tossmini-docs.toss.im/tds-mobile/hooks/OverlayExtension/use-dialog/) |
+| **useToast** | "일시적인 알림이나 피드백 표시" | • 완료 알림 • 오류 메시지 • 상태 피드백 | [useToast 문서](https://tossmini-docs.toss.im/tds-mobile/hooks/OverlayExtension/use-toast/) |
+| **useBottomSheet** | "추가 정보나 작업을 화면 하단에서 표시" | • 상세 정보 • 추가 옵션 • 복잡한 상호작용 | [useBottomSheet 문서](https://tossmini-docs.toss.im/tds-mobile/hooks/OverlayExtension/use-bottom-sheet/) |
 
 ## 사용 예시
 

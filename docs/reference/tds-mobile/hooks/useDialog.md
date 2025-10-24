@@ -112,6 +112,6 @@ ConfirmOptions를 확장하며 다음을 추가합니다:
 
 ## 관련 리소스
 
-- [Overlay Extension 개요](/tds-mobile/hooks/OverlayExtension/check-first/)
-- [useToast Hook](/tds-mobile/hooks/OverlayExtension/use-toast/)
-- [useBottomSheet Hook](/tds-mobile/hooks/OverlayExtension/use-bottom-sheet/)
+- [Overlay Extension 개요](https://tossmini-docs.toss.im/tds-mobile/hooks/OverlayExtension/check-first/)
+- [useToast Hook](https://tossmini-docs.toss.im/tds-mobile/hooks/OverlayExtension/use-toast/)
+- [useBottomSheet Hook](https://tossmini-docs.toss.im/tds-mobile/hooks/OverlayExtension/use-bottom-sheet/)

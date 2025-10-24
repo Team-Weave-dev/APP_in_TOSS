@@ -4,7 +4,7 @@
 
 ### What is TDS?
 
-![Hero Image](/tds-mobile/_next/static/media/hero.9423cfa3.jpeg)
+![Hero Image](https://tossmini-docs.toss.im/tds-mobile/_next/static/media/hero.9423cfa3.jpeg)
 
 TDS represents a comprehensive design system utilized across Toss products. It encompasses hundreds of components and templates that extend beyond design tooling into development, functioning as a unified language throughout product creation.
 
@@ -37,4 +37,4 @@ Over 40+ components including Badge, Button, Modal, TextField, Dialog, Chart, an
 
 ---
 
-**Get Started:** Visit the [Getting Started](/tds-mobile/start/) section to begin implementation.
+**Get Started:** Visit the [Getting Started](https://tossmini-docs.toss.im/tds-mobile/start/) section to begin implementation.

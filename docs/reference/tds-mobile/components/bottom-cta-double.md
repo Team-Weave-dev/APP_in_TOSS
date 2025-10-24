@@ -81,5 +81,5 @@ Enable `hideOnScroll={true}` to auto-hide during scrolling. Configure `hideOnScr
 
 ## Related Components
 
-- [Single](/tds-mobile/components/BottomCTA/Single/) - Single button variant
-- [FixedBottomCTA](/tds-mobile/components/BottomCTA/fixed-bottom-cta/) - Fixed positioning variant
+- [Single](https://tossmini-docs.toss.im/tds-mobile/components/BottomCTA/Single/) - Single button variant
+- [FixedBottomCTA](https://tossmini-docs.toss.im/tds-mobile/components/BottomCTA/fixed-bottom-cta/) - Fixed positioning variant
