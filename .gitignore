@@ -1,0 +1,17 @@
+# Claude Code 설정
+.claude/
+
+# Playwright MCP
+.playwright-mcp/
+
+# 임시 파일
+url-list.txt
+
+# macOS
+.DS_Store
+
+# 로그
+*.log
+
+# 의존성
+node_modules/
