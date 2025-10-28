@@ -127,8 +127,12 @@ docs/reference/claude.md
   - [x] 빠른 참조 섹션 (자주 사용하는 컴포넌트)
   - [x] 사용 패턴 및 프로젝트 설정 확인 방법
   - [x] 연관 문서 링크
-- [ ] 5.5. docs/04-development/claude.md 수정
-  - [ ] 프로젝트 유형별 올바른 TDS 매핑
+- [x] 5.5. docs/04-development/claude.md 수정 ✅
+  - [x] 프로젝트 타입별 UI 라이브러리 섹션 추가
+  - [x] 연동하기 섹션: TDS 라이브러리 명시
+  - [x] 프로젝트 유형별 필수 문서: TDS 매핑 명확화
+  - [x] 주의사항: 타입별 TDS 확인 1순위로 추가
+  - [x] 연관 디렉토리: TDS Mobile 링크 추가
 - [ ] 5.6. docs/03-design/claude.md 수정
   - [ ] 프로젝트 유형별 UI 라이브러리 올바른 매핑
 
@@ -188,12 +192,12 @@ ui:
 - **Phase 2**: ✅ 3/3 (100%)
 - **Phase 3**: ✅ 3/3 (100%)
 - **Phase 4**: ✅ 4/4 (100%)
-- **Phase 5**: 🔄 4/6 (67%)
+- **Phase 5**: 🔄 5/6 (83%)
 - **Phase 6**: ⬜ 0/4 (0%)
 - **Phase 7**: ⬜ 0/4 (0%)
 - **Phase 8**: ⬜ 0/4 (0%)
 
-**전체 진행률**: 17/31 (55%)
+**전체 진행률**: 18/31 (58%)
 
 ---
 
@@ -280,7 +284,21 @@ ui:
   - 빠른 참조: 입력/폼, 레이아웃, 피드백, 네비게이션별 분류
   - 사용 패턴: 임포트 방법 및 프로젝트 설정 확인
   - 연관 문서: WebView 개발 가이드, 디자인 가이드, 예제 코드
-- **다음 작업**: Phase 5.5 - docs/04-development/claude.md 수정
+
+**17:35 - Phase 5.5 완료**
+- ✅ 5.5: docs/04-development/claude.md 수정 완료
+- **추가 내용**:
+  - 문서 상단에 "프로젝트 타입별 UI 라이브러리" 섹션
+  - WebView/React Native/Unity 각 타입별 TDS 명시
+- **수정 내용**:
+  - 연동하기 섹션: React Native (TDS RN), WebView (TDS Mobile), Unity (Unity UI)
+  - 프로젝트 유형별 필수 문서: TDS 라이브러리 명확히 표시
+    * React Native: TDS React Native (온라인)
+    * WebView: TDS Mobile (로컬 67개)
+    * Unity: Unity UI
+  - 주의사항: 타입별 TDS 확인을 1순위로 추가
+  - 연관 디렉토리: TDS Mobile 로컬 문서 링크 추가
+- **다음 작업**: Phase 5.6 - docs/03-design/claude.md 수정 (마지막!)
 
 ---
 
