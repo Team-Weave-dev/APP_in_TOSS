@@ -1,0 +1,334 @@
+# [프로젝트명] 프로젝트 컨텍스트 가이드
+
+> **Apps in Toss WebView 앱**: [프로젝트 간단 설명]
+> **프로젝트 타입**: 🌐 WebView (Web React)
+> **최종 업데이트**: [YYYY-MM-DD]
+> **상위 문서**: [../../CLAUDE.md](../../CLAUDE.md) (APPinTOSS 프로젝트 루트)
+
+---
+
+## ⚠️ 프로젝트 타입: WebView 앱
+
+**이 프로젝트는 WebView(Web React) 기반 Apps in Toss 앱입니다.**
+
+### ✅ 사용 가능한 기술
+- **프레임워크**: `@apps-in-toss/web-framework`
+- **UI 라이브러리**: **TDS Mobile** (`@toss/tds-mobile`)
+- **필수 의존성**:
+  ```json
+  {
+    "@apps-in-toss/framework": "latest",
+    "@toss/tds-mobile": "latest",
+    "@toss/tds-mobile-ait": "latest",
+    "@emotion/react": "^11",
+    "react": "^18",
+    "react-dom": "^18"
+  }
+  ```
+- **번들러**: Vite, Webpack, Next.js (Static Export)
+
+### ❌ 사용 불가 (혼용 금지!)
+- ❌ `@toss/tds-react-native` (React Native 전용)
+- ❌ `react-native` (React Native 전용)
+- ❌ `@granite-js/react-native` (React Native 전용)
+
+### 📚 참조 문서
+- **TDS Mobile**: [../../docs/reference/tds-mobile/](../../docs/reference/tds-mobile/) (로컬 67개 문서)
+  - Components: Button, TextField, Dialog, BottomSheet 등 58개
+  - Hooks: useDialog, useToast, useBottomSheet 등 4개
+  - Foundations: 색상, 타이포그래피 등
+- **Bedrock SDK**: [../../docs/reference/bedrock/](../../docs/reference/bedrock/) (94개 API)
+- **개발 가이드**: [../../docs/04-development/06-webview.md](../../docs/04-development/06-webview.md)
+- **디자인 가이드**: [../../docs/03-design/](../../docs/03-design/)
+- **WebView 예제**: [../../example/weekly-todo-react/](../../example/weekly-todo-react/)
+
+---
+
+## 📚 문서 계층 구조
+
+### 상위 참조 문서 (읽기 전용)
+```
+../../                          # APPinTOSS 프로젝트 루트
+├── CLAUDE.md                   # 루트 프로젝트 컨텍스트
+├── QUICK_REFERENCE.md          # 빠른 참조 가이드
+├── docs/                       # Apps in Toss 표준 문서 (참조 필수)
+│   ├── reference/bedrock/      # Bedrock SDK API 문서 (94개)
+│   ├── reference/tds-mobile/   # TDS Mobile 디자인 시스템 (67개) ✅
+│   ├── 04-development/         # 개발 가이드
+│   │   └── 06-webview.md       # WebView 개발 가이드 ✅
+│   └── 03-design/              # 디자인 가이드
+│       └── 07-tds-mobile.md    # TDS Mobile 소개 ✅
+└── example/                    # Apps in Toss 예제 프로젝트 (참조 필수)
+    ├── weekly-todo-react/      # React + TDS Mobile 예제 ✅
+    └── with-*/                 # API 활용 예제들
+```
+
+**참조 규칙**:
+- `../../docs/` - Apps in Toss 표준 문서, 읽기 전용
+- `../../example/` - 공식 예제 코드, 참조 전용
+- 모든 Bedrock SDK 사용 시 반드시 `../../docs/reference/bedrock/` 확인
+- TDS 컴포넌트 사용 시 `../../docs/reference/tds-mobile/` 확인 ✅
+
+### 현재 프로젝트 문서 (읽기/쓰기)
+```
+./                              # [프로젝트명] 루트
+├── CLAUDE.md                   # 현재 파일 (프로젝트 컨텍스트)
+├── TASK.md                     # 작업 진행 현황 (실시간 업데이트)
+├── README.md                   # 프로젝트 소개
+├── docs/                       # 프로젝트 문서
+│   ├── PRD.md                  # 제품 요구사항 정의서
+│   ├── TECHNICAL_SPEC.md       # 기술 사양서
+│   └── DEVELOPMENT_GUIDE.md    # 개발 가이드
+├── src/                        # 소스 코드
+└── package.json                # 의존성 설정 (WebView 타입 확인)
+```
+
+---
+
+## 🎯 프로젝트 개요
+
+**프로젝트명**: [프로젝트명]
+**목적**: [프로젝트 목적 및 핵심 가치]
+**플랫폼**: Apps in Toss (WebView)
+**개발 상태**: [개발 진행 상태]
+
+### 핵심 기능
+1. [핵심 기능 1]
+2. [핵심 기능 2]
+3. [핵심 기능 3]
+
+### 수익 모델 (선택사항)
+- [수익 모델 설명]
+
+---
+
+## 🏗️ 기술 스택
+
+### Core (WebView 앱)
+- **Framework**: [React 기반 프레임워크: Next.js, Vite, CRA 등]
+- **Language**: TypeScript
+- **Styling**: [스타일링 방법: Tailwind, Emotion, CSS Modules 등]
+
+### Apps in Toss (WebView)
+- **SDK**: `@apps-in-toss/framework`
+- **UI Library**: **TDS Mobile** (`@toss/tds-mobile`) ✅
+  - 참조: `../../docs/reference/tds-mobile/`
+  - 예제: `../../example/weekly-todo-react/`
+- **Bedrock API**: `../../docs/reference/bedrock/`
+
+### State Management
+- **Server State**: [TanStack Query, SWR 등]
+- **Client State**: [React Context, Zustand, Jotai 등]
+- **Validation**: [Zod, Yup 등]
+
+---
+
+## 📂 프로젝트 구조
+
+```
+[프로젝트명]/
+├── src/
+│   ├── [프레임워크별 구조]
+│   ├── components/             # UI 컴포넌트
+│   ├── hooks/                  # Custom Hooks
+│   ├── libs/                   # 유틸리티
+│   └── types/                  # 타입 정의
+├── public/                     # 정적 파일
+├── docs/                       # 프로젝트 문서
+├── package.json                # ✅ WebView 의존성 확인
+├── tsconfig.json               # TypeScript 설정
+└── TASK.md                     # 작업 진행 현황
+```
+
+---
+
+## 🔑 환경 변수
+
+```bash
+# .env (실제 값은 .env.example 참조)
+
+# Apps in Toss
+NEXT_PUBLIC_INTOSS_APP_NAME=[앱이름]
+NEXT_PUBLIC_INTOSS_DEBUG=true
+
+# 기타 API 키
+# [필요한 환경 변수 추가]
+```
+
+---
+
+## 📚 참조 문서
+
+### 필수 참조
+- [TASK.md](TASK.md) - 작업 진행 현황 및 계획
+- [docs/PRD.md](docs/PRD.md) - 제품 요구사항
+- [docs/TECHNICAL_SPEC.md](docs/TECHNICAL_SPEC.md) - 기술 사양서
+
+### WebView 개발 가이드
+- [WebView 개발](../../docs/04-development/06-webview.md) - WebView 앱 개발 가이드
+- [샌드박스 테스트](../../docs/04-development/08-sandbox.md) - 로컬 테스트 환경
+- [토스앱 테스트](../../docs/04-development/09-toss.md) - 실제 환경 테스트
+
+### TDS Mobile (WebView 전용) ✅
+- [TDS Mobile 소개](../../docs/03-design/07-tds-mobile.md) - 디자인 시스템 개요
+- [컴포넌트](../../docs/reference/tds-mobile/components/) - 58개 UI 컴포넌트
+- [Hooks](../../docs/reference/tds-mobile/hooks/) - 4개 React Hook
+- [Foundations](../../docs/reference/tds-mobile/foundations/) - 색상, 타이포그래피
+- **공식**: https://tossmini-docs.toss.im/tds-mobile/
+
+### Bedrock SDK (공통)
+- [Bedrock SDK](../../docs/reference/bedrock/) - 94개 API
+- 카테고리별: `ads/`, `analytics/`, `location/`, `navigation/`, `permission/`, `storage/` 등
+
+### 예제 코드
+- [React + TDS Mobile 예제](../../example/weekly-todo-react/) - WebView 앱 예제 ✅
+- [API 예제들](../../example/) - Bedrock SDK 활용 예제
+
+---
+
+## ⚠️ 중요 규칙
+
+### 프로젝트 타입 (WebView 앱)
+- ✅ **TDS Mobile** 사용 (`@toss/tds-mobile`)
+- ✅ `react-dom` 필수 의존성
+- ❌ **TDS React Native** 사용 금지 (`@toss/tds-react-native`)
+- ❌ `react-native` 사용 금지
+
+### 코드 작성
+- ✅ 모든 코드/주석: **영어**
+- ✅ 문서/설명: **한글**
+- ✅ Bedrock SDK 사용 시 반드시 `../../docs/reference/bedrock/` 확인
+- ✅ TDS 컴포넌트 사용 시 `../../docs/reference/tds-mobile/` 확인
+- ❌ Deprecated API 사용 금지
+
+### 파일 위치
+- ✅ 모든 개발은 `./` (프로젝트 루트)에서만 진행
+- ❌ `../../` (상위 디렉토리) 수정 금지 (읽기 전용)
+
+### 문서 참조
+- ✅ TDS Mobile: `../../docs/reference/tds-mobile/` (WebView 전용)
+- ✅ Bedrock API: `../../docs/reference/bedrock/`
+- ✅ WebView 가이드: `../../docs/04-development/06-webview.md`
+- ✅ 예제 코드: `../../example/weekly-todo-react/`
+- ✅ 프로젝트 문서: `./docs/`
+- ✅ 작업 현황: `./TASK.md`
+
+### 개발 워크플로우
+
+**Step 1: 작업 확인**
+```bash
+# TASK.md 확인 → 현재 진행 중인 작업 파악
+# docs/ 참조 → PRD, TECHNICAL_SPEC 확인
+# ../../docs/reference/ 참조 → API 문서 확인
+```
+
+**Step 2: 구현**
+```bash
+# TDS Mobile 컴포넌트 사용 (../../docs/reference/tds-mobile/)
+# Bedrock API 사용 (../../docs/reference/bedrock/)
+# 예제 참조 (../../example/)
+```
+
+**Step 3: 문서 업데이트**
+```bash
+# TASK.md 체크박스 업데이트
+# CLAUDE.md 필요 시 수정
+```
+
+**Step 4: 커밋**
+```bash
+git add .
+git commit -m "feat: [기능명] 구현"
+```
+
+---
+
+## 📝 작업 진행 상황
+
+### ✅ 완료된 작업
+- [x] 프로젝트 초기화
+- [x] [완료된 작업들]
+
+### 🔄 진행 중인 작업
+- [진행 중인 작업들]
+
+### ⏳ 예정된 작업
+- [예정된 작업들]
+
+---
+
+## 🎨 TDS Mobile 컴포넌트 사용 예시
+
+### 기본 컴포넌트 임포트
+```typescript
+// ✅ WebView 앱에서 TDS Mobile 사용
+import { Button, TextField, Dialog } from '@toss/tds-mobile';
+import { useDialog, useToast } from '@toss/tds-mobile';
+```
+
+### 자주 사용하는 컴포넌트
+- [Button](../../docs/reference/tds-mobile/components/button.md) - 버튼
+- [TextField](../../docs/reference/tds-mobile/components/text-field.md) - 입력 필드
+- [Dialog](../../docs/reference/tds-mobile/components/dialog.md) - 다이얼로그
+- [BottomSheet](../../docs/reference/tds-mobile/components/bottom-sheet.md) - 바텀시트
+- [Toast](../../docs/reference/tds-mobile/hooks/useToast.md) - 토스트 메시지
+
+### 프로젝트 타입 확인
+```bash
+# package.json 확인 (WebView 타입 검증)
+cat package.json | grep "@toss/tds-mobile"
+
+# ✅ WebView 프로젝트라면 있어야 함
+"@toss/tds-mobile": "^x.x.x"
+"react-dom": "^18.x.x"
+
+# ❌ React Native 패키지가 있으면 안됨!
+# "@toss/tds-react-native" 없어야 함
+# "react-native" 없어야 함
+```
+
+---
+
+## 🚀 빠른 시작
+
+```bash
+# 1. 의존성 설치
+npm install
+# 또는
+yarn install
+
+# 2. 환경변수 설정
+cp .env.example .env
+# .env 파일 편집 (필요한 API 키 입력)
+
+# 3. 개발 서버 실행
+npm run dev
+# 또는
+yarn dev
+
+# 4. 브라우저 접속
+# http://localhost:3000
+```
+
+---
+
+## 📖 관련 문서
+
+### 상위 문서
+- [../../CLAUDE.md](../../CLAUDE.md) - APPinTOSS 프로젝트 루트
+- [../../QUICK_REFERENCE.md](../../QUICK_REFERENCE.md) - 빠른 참조 가이드
+- [../../REFERENCE_GUIDE.md](../../REFERENCE_GUIDE.md) - 참조 규칙 가이드
+
+### 현재 프로젝트 문서
+- [TASK.md](TASK.md) - 작업 진행 현황 (실시간 업데이트)
+- [README.md](README.md) - 프로젝트 소개
+- [docs/PRD.md](docs/PRD.md) - 제품 요구사항
+- [docs/TECHNICAL_SPEC.md](docs/TECHNICAL_SPEC.md) - 기술 사양서
+- [docs/DEVELOPMENT_GUIDE.md](docs/DEVELOPMENT_GUIDE.md) - 개발 가이드
+
+---
+
+**프로젝트 생성일**: [YYYY-MM-DD]
+**마지막 업데이트**: [YYYY-MM-DD]
+**버전**: 1.0
+**프로젝트 타입**: 🌐 WebView (TDS Mobile)
