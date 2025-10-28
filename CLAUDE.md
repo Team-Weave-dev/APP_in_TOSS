@@ -38,8 +38,8 @@ APPinTOSS/                          # 루트 디렉토리
 │   ├── 10-growth/                  # 성장
 │   ├── 11-resources/               # 리소스
 │   └── reference/                  # API 레퍼런스
-│       ├── bedrock/                # Bedrock SDK (94개)
-│       └── tds-mobile/             # TDS Mobile (67개)
+│       ├── bedrock/                # Bedrock SDK (94개 - 모든 타입 공통)
+│       └── tds-mobile/             # TDS Mobile (67개 - WebView 전용)
 │
 ├── example/                        # 💡 공식 예제 (읽기 전용)
 │   ├── claude.md                   # 예제 디렉토리 가이드
@@ -108,6 +108,73 @@ APPinTOSS/                          # 루트 디렉토리
 
 ---
 
+## 프로젝트 타입 구분 시스템
+
+Apps in Toss 플랫폼은 **3가지 프로젝트 타입**을 지원하며, 각 타입은 **서로 다른 UI 라이브러리**를 사용합니다.
+
+### 📱 지원 프로젝트 타입
+
+#### Type 1: WebView 앱 (Web React)
+**프레임워크**: `@apps-in-toss/web-framework`
+**UI 라이브러리**: **TDS Mobile** (`@toss/tds-mobile`)
+**필수 의존성**: `react`, `react-dom`, `@emotion/react`
+**번들러**: Vite, Webpack
+**참조 문서**:
+- [WebView 개발 가이드](docs/04-development/06-webview.md)
+- [TDS Mobile 컴포넌트](docs/reference/tds-mobile/)
+- 공식: https://tossmini-docs.toss.im/tds-mobile/
+
+#### Type 2: React Native 앱
+**프레임워크**: Granite (`@granite-js/react-native`)
+**UI 라이브러리**: **TDS React Native** (`@toss/tds-react-native`)
+**필수 의존성**: `react-native`, `@apps-in-toss/framework`
+**참조 문서**:
+- [React Native 개발 가이드](docs/04-development/03-react-native.md)
+- 공식: https://tossmini-docs.toss.im/tds-react-native/
+- ⚠️ 로컬 문서 미수집 (온라인 참조 필요)
+
+#### Type 3: Unity 게임 앱
+**프레임워크**: Unity + React Native wrapper
+**UI 라이브러리**: Unity UI (제한적 TDS 지원)
+**참조 문서**:
+- [Unity 개발 가이드](docs/04-development/07-unity.md)
+- 공식: https://developers-apps-in-toss.toss.im/tutorials/unity.html
+
+### ⚠️ 타입별 주의사항
+
+**절대 혼용 금지**:
+- ❌ WebView 앱에서 `@toss/tds-react-native` 사용
+- ❌ React Native 앱에서 `@toss/tds-mobile` 사용
+- ❌ React Native 앱에서 `react-dom` 사용
+
+**프로젝트 타입 선언 방법**:
+
+각 프로젝트의 `CLAUDE.md` 상단에 타입을 명시:
+
+```markdown
+# [프로젝트명] - Apps in Toss 프로젝트
+
+> **프로젝트 타입**: WebView | React Native | Unity
+> **UI 라이브러리**: TDS Mobile | TDS React Native | Unity UI
+> **프레임워크**: @apps-in-toss/web-framework | Granite | Unity
+
+---
+
+## 기술 스택 검증
+
+**자동 감지 결과**:
+- ✅ package.json에서 [타입] 확인됨
+- ✅ [UI 라이브러리] 사용 올바름
+```
+
+**자동 검증**: `package.json`의 의존성으로 타입 자동 감지 가능 ([검증 규칙 상세](docs/PROJECT_TYPE_SYSTEM.md))
+
+**상세 문서**:
+- [기술 스택 매핑](docs/TECH_STACK_MAPPING.md)
+- [프로젝트 타입 구분 시스템](docs/PROJECT_TYPE_SYSTEM.md)
+
+---
+
 ## 필수 지시사항
 
 ### 언어 규칙
@@ -165,14 +232,20 @@ APPinTOSS/                          # 루트 디렉토리
 **목적**: Apps in Toss 개발자 문서 저장소
 
 **구성**:
-- 가이드 문서: 78개
-- Bedrock SDK API: 94개
-- TDS Mobile: 67개
+- 가이드 문서: 78개 (모든 타입 공통)
+- Bedrock SDK API: 94개 (모든 타입 공통)
+- TDS Mobile: 67개 (**WebView 전용**)
+
+**타입별 참조**:
+- **WebView 앱**: TDS Mobile 문서 참조 (`docs/reference/tds-mobile/`)
+- **React Native 앱**: 온라인 TDS React Native 문서 참조 (로컬 미수집)
+- **Unity 앱**: Unity UI 시스템 사용
 
 **원본 출처**:
 - 가이드: https://developers-apps-in-toss.toss.im
 - Bedrock SDK: https://developers-apps-in-toss.toss.im/reference/bedrock
-- TDS Mobile: https://tossmini-docs.toss.im/tds-mobile
+- TDS Mobile (WebView): https://tossmini-docs.toss.im/tds-mobile
+- TDS React Native: https://tossmini-docs.toss.im/tds-react-native
 
 **세부 가이드**: [docs/claude.md](docs/claude.md)
 
@@ -235,12 +308,15 @@ cat ../../example/with-[feature]/src/App.tsx
 vim src/[component].tsx
 ```
 
-**TDS 컴포넌트 사용**:
+**TDS 컴포넌트 사용** (타입별 다름):
 ```bash
-# 1. TDS Mobile 문서 확인
+# WebView 앱인 경우
 cat ../../docs/reference/tds-mobile/components/[component].md
+vim src/[component].tsx
 
-# 2. 프로젝트에 적용
+# React Native 앱인 경우
+# 온라인 문서 참조: https://tossmini-docs.toss.im/tds-react-native/
+open https://tossmini-docs.toss.im/tds-react-native/
 vim src/[component].tsx
 ```
 
@@ -278,21 +354,31 @@ cat ../../REFERENCE_GUIDE.md
    - 각 프로젝트는 독립적으로 개발
    - docs/example 디렉토리는 절대 수정 금지
 
-4. **버전 확인**
+4. **프로젝트 타입 확인**
+   - 프로젝트 생성 시 타입(WebView/React Native/Unity)을 CLAUDE.md에 명시
+   - package.json에 올바른 UI 라이브러리만 포함
+   - WebView → TDS Mobile, React Native → TDS React Native
+
+5. **버전 확인**
    - Bedrock API 문서에서 최소 지원 버전 확인
-   - TDS Mobile v2 마이그레이션 가이드 참조
+   - TDS v2 마이그레이션 가이드 참조
 
 ### ❌ 주의사항
 
-1. **문서/예제 직접 수정 금지**
+1. **타입별 UI 라이브러리 혼용 금지** ⚠️
+   - WebView 프로젝트: TDS Mobile만 사용
+   - React Native 프로젝트: TDS React Native만 사용
+   - 잘못된 TDS 사용 시 런타임 오류 발생
+
+2. **문서/예제 직접 수정 금지**
    - `/docs`와 `/example`은 읽기 전용
    - 수정이 필요한 경우 루트 레벨에서 관리
 
-2. **복사 후 참조 끊기**
+3. **복사 후 참조 끊기**
    - 예제 코드 복사 후 독립적으로 개발
    - 예제 디렉토리 직접 수정 금지
 
-3. **상대 경로 하드코딩 방지**
+4. **상대 경로 하드코딩 방지**
    - 문서/예제 경로를 코드에 하드코딩하지 않기
    - 필요시 스크립트로 자동화
 
