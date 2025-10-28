@@ -67,7 +67,7 @@ Apps in Toss **WebView 앱** 전용 UI 컴포넌트 라이브러리 문서입니
   - [useBottomSheet.md](hooks/useBottomSheet.md) - 바텀시트 제어
   - [useDialog.md](hooks/useDialog.md) - 다이얼로그 제어
   - [useToast.md](hooks/useToast.md) - 토스트 메시지
-  - [useOverlay.md](hooks/useOverlay.md) - 오버레이 제어
+  - OverlayExtension - 오버레이 확장 (고급)
 
 ### 🔄 Migration (마이그레이션)
 - **[migration/](migration/)** - TDS v1 → v2 마이그레이션 가이드
@@ -87,26 +87,23 @@ Apps in Toss **WebView 앱** 전용 UI 컴포넌트 라이브러리 문서입니
 - [Button](components/button.md) - 버튼
 - [TextField](components/text-field.md) - 텍스트 입력
 - [Checkbox](components/checkbox.md) - 체크박스
-- [Radio](components/radio.md) - 라디오 버튼
 - [Switch](components/switch.md) - 토글 스위치
-- [Select](components/select.md) - 셀렉트 박스
 
 #### 레이아웃
-- [Flex](components/flex.md) - 플렉스 레이아웃
-- [Grid](components/grid.md) - 그리드 레이아웃
-- [Container](components/container.md) - 컨테이너
-- [Divider](components/divider.md) - 구분선
+- [GridList](components/grid-list.md) - 그리드 리스트
+- [BorderBox](components/border.md) - 테두리 박스
 
 #### 피드백
 - [Dialog](components/dialog.md) - 다이얼로그
 - [Toast](hooks/useToast.md) - 토스트 메시지
-- [Spinner](components/spinner.md) - 로딩 스피너
+- [NumericSpinner](components/numeric-spinner.md) - 숫자 스피너
 - [ProgressBar](components/progress-bar.md) - 진행 바
 
 #### 네비게이션
-- [Tabs](components/tabs.md) - 탭
 - [BottomSheet](components/bottom-sheet.md) - 바텀시트
 - [SegmentedControl](components/segmented-control.md) - 세그먼트 컨트롤
+
+⚠️ **전체 컴포넌트 목록**: `ls components/` 명령어로 확인하거나 [공식 문서](https://tossmini-docs.toss.im/tds-mobile/components) 참조
 
 ---
 
