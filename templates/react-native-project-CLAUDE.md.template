@@ -1,0 +1,360 @@
+# [프로젝트명] 프로젝트 컨텍스트 가이드
+
+> **Apps in Toss React Native 앱**: [프로젝트 간단 설명]
+> **프로젝트 타입**: 📱 React Native
+> **최종 업데이트**: [YYYY-MM-DD]
+> **상위 문서**: [../../CLAUDE.md](../../CLAUDE.md) (APPinTOSS 프로젝트 루트)
+
+---
+
+## ⚠️ 프로젝트 타입: React Native 앱
+
+**이 프로젝트는 React Native 기반 Apps in Toss 앱입니다.**
+
+### ✅ 사용 가능한 기술
+- **프레임워크**: Granite (`@granite-js/react-native`)
+- **UI 라이브러리**: **TDS React Native** (`@toss/tds-react-native`)
+- **필수 의존성**:
+  ```json
+  {
+    "@apps-in-toss/framework": "latest",
+    "@granite-js/react-native": "latest",
+    "@toss/tds-react-native": "latest",
+    "react": "^18",
+    "react-native": "latest"
+  }
+  ```
+- **플랫폼**: iOS, Android (네이티브)
+
+### ❌ 사용 불가 (혼용 금지!)
+- ❌ `@toss/tds-mobile` (WebView 전용)
+- ❌ `react-dom` (WebView 전용)
+- ❌ `@apps-in-toss/web-framework` (WebView 전용)
+
+### 📚 참조 문서
+- **TDS React Native**: https://tossmini-docs.toss.im/tds-react-native/ (온라인만 가능) ⚠️
+  - Components: Button, TextField, Dialog, BottomSheet 등
+  - Hooks: useDialog, useToast, useBottomSheet 등
+  - ⚠️ **로컬 문서 없음** - 공식 온라인 문서 필수 참조
+- **Bedrock SDK**: [../../docs/reference/bedrock/](../../docs/reference/bedrock/) (94개 API)
+- **개발 가이드**: [../../docs/04-development/03-react-native.md](../../docs/04-development/03-react-native.md)
+- **디자인 가이드**: [../../docs/03-design/](../../docs/03-design/)
+
+---
+
+## 📚 문서 계층 구조
+
+### 상위 참조 문서 (읽기 전용)
+```
+../../                          # APPinTOSS 프로젝트 루트
+├── CLAUDE.md                   # 루트 프로젝트 컨텍스트
+├── QUICK_REFERENCE.md          # 빠른 참조 가이드
+├── docs/                       # Apps in Toss 표준 문서 (참조 필수)
+│   ├── reference/bedrock/      # Bedrock SDK API 문서 (94개)
+│   ├── 04-development/         # 개발 가이드
+│   │   └── 03-react-native.md  # React Native 개발 가이드 ✅
+│   └── 03-design/              # 디자인 가이드
+└── example/                    # Apps in Toss 예제 프로젝트 (참조 필수)
+    └── with-*/                 # API 활용 예제들
+```
+
+**참조 규칙**:
+- `../../docs/` - Apps in Toss 표준 문서, 읽기 전용
+- `../../example/` - 공식 예제 코드, 참조 전용
+- 모든 Bedrock SDK 사용 시 반드시 `../../docs/reference/bedrock/` 확인
+- TDS 컴포넌트 사용 시 **온라인 문서** 필수 참조 ⚠️
+
+### 현재 프로젝트 문서 (읽기/쓰기)
+```
+./                              # [프로젝트명] 루트
+├── CLAUDE.md                   # 현재 파일 (프로젝트 컨텍스트)
+├── TASK.md                     # 작업 진행 현황 (실시간 업데이트)
+├── README.md                   # 프로젝트 소개
+├── docs/                       # 프로젝트 문서
+│   ├── PRD.md                  # 제품 요구사항 정의서
+│   ├── TECHNICAL_SPEC.md       # 기술 사양서
+│   └── DEVELOPMENT_GUIDE.md    # 개발 가이드
+├── src/                        # 소스 코드
+├── android/                    # Android 네이티브
+├── ios/                        # iOS 네이티브
+├── package.json                # 의존성 설정 (React Native 타입 확인)
+└── granite.config.ts           # Granite 설정
+```
+
+---
+
+## 🎯 프로젝트 개요
+
+**프로젝트명**: [프로젝트명]
+**목적**: [프로젝트 목적 및 핵심 가치]
+**플랫폼**: Apps in Toss (React Native)
+**개발 상태**: [개발 진행 상태]
+
+### 핵심 기능
+1. [핵심 기능 1]
+2. [핵심 기능 2]
+3. [핵심 기능 3]
+
+### 수익 모델 (선택사항)
+- [수익 모델 설명]
+
+---
+
+## 🏗️ 기술 스택
+
+### Core (React Native 앱)
+- **Framework**: Granite (`@granite-js/react-native`)
+- **Language**: TypeScript
+- **Styling**: [스타일링 방법: Styled-components, TDS RN 기본 스타일 등]
+
+### Apps in Toss (React Native)
+- **SDK**: `@apps-in-toss/framework`
+- **UI Library**: **TDS React Native** (`@toss/tds-react-native`) ✅
+  - 공식: https://tossmini-docs.toss.im/tds-react-native/
+  - ⚠️ 로컬 문서 없음 - 온라인 참조 필수
+- **Bedrock API**: `../../docs/reference/bedrock/`
+
+### State Management
+- **Server State**: [TanStack Query, SWR 등]
+- **Client State**: [React Context, Zustand, Jotai 등]
+- **Validation**: [Zod, Yup 등]
+
+---
+
+## 📂 프로젝트 구조
+
+```
+[프로젝트명]/
+├── src/
+│   ├── screens/                # 화면 컴포넌트
+│   ├── components/             # UI 컴포넌트
+│   ├── hooks/                  # Custom Hooks
+│   ├── libs/                   # 유틸리티
+│   └── types/                  # 타입 정의
+├── android/                    # Android 네이티브 코드
+├── ios/                        # iOS 네이티브 코드
+├── public/                     # 정적 파일
+├── docs/                       # 프로젝트 문서
+├── package.json                # ✅ React Native 의존성 확인
+├── tsconfig.json               # TypeScript 설정
+├── granite.config.ts           # ✅ Granite 설정
+└── TASK.md                     # 작업 진행 현황
+```
+
+---
+
+## 🔑 환경 변수
+
+```bash
+# .env (실제 값은 .env.example 참조)
+
+# Apps in Toss
+INTOSS_APP_NAME=[앱이름]
+INTOSS_DEBUG=true
+
+# 기타 API 키
+# [필요한 환경 변수 추가]
+```
+
+---
+
+## 📚 참조 문서
+
+### 필수 참조
+- [TASK.md](TASK.md) - 작업 진행 현황 및 계획
+- [docs/PRD.md](docs/PRD.md) - 제품 요구사항
+- [docs/TECHNICAL_SPEC.md](docs/TECHNICAL_SPEC.md) - 기술 사양서
+
+### React Native 개발 가이드
+- [React Native 개발](../../docs/04-development/03-react-native.md) - Granite 프레임워크 가이드
+- [Android 설정](../../docs/04-development/04-android.md) - Android Studio, SDK 설정
+- [iOS 설정](../../docs/04-development/05-ios.md) - Xcode, CocoaPods 설정
+- [샌드박스 테스트](../../docs/04-development/08-sandbox.md) - 로컬 테스트 환경
+- [토스앱 테스트](../../docs/04-development/09-toss.md) - 실제 환경 테스트
+
+### TDS React Native (React Native 전용) ✅
+- **공식 문서**: https://tossmini-docs.toss.im/tds-react-native/ (온라인만 가능)
+- **주요 페이지**:
+  - Components: https://tossmini-docs.toss.im/tds-react-native/components
+  - Hooks: https://tossmini-docs.toss.im/tds-react-native/hooks
+  - Foundations: https://tossmini-docs.toss.im/tds-react-native/foundations
+- ⚠️ **로컬 문서 없음** - 반드시 공식 온라인 문서 참조
+
+### Bedrock SDK (공통)
+- [Bedrock SDK](../../docs/reference/bedrock/) - 94개 API
+- 카테고리별: `ads/`, `analytics/`, `location/`, `navigation/`, `permission/`, `storage/` 등
+
+### 예제 코드
+- [API 예제들](../../example/) - Bedrock SDK 활용 예제
+
+---
+
+## ⚠️ 중요 규칙
+
+### 프로젝트 타입 (React Native 앱)
+- ✅ **TDS React Native** 사용 (`@toss/tds-react-native`)
+- ✅ `react-native` 필수 의존성
+- ✅ Granite 프레임워크 (`@granite-js/react-native`)
+- ❌ **TDS Mobile** 사용 금지 (`@toss/tds-mobile`)
+- ❌ `react-dom` 사용 금지 (WebView 전용)
+
+### 코드 작성
+- ✅ 모든 코드/주석: **영어**
+- ✅ 문서/설명: **한글**
+- ✅ Bedrock SDK 사용 시 반드시 `../../docs/reference/bedrock/` 확인
+- ✅ TDS 컴포넌트 사용 시 공식 온라인 문서 확인 (https://tossmini-docs.toss.im/tds-react-native/)
+- ❌ Deprecated API 사용 금지
+
+### 파일 위치
+- ✅ 모든 개발은 `./` (프로젝트 루트)에서만 진행
+- ❌ `../../` (상위 디렉토리) 수정 금지 (읽기 전용)
+
+### 문서 참조
+- ✅ TDS React Native: https://tossmini-docs.toss.im/tds-react-native/ (온라인)
+- ✅ Bedrock API: `../../docs/reference/bedrock/`
+- ✅ React Native 가이드: `../../docs/04-development/03-react-native.md`
+- ✅ 예제 코드: `../../example/`
+- ✅ 프로젝트 문서: `./docs/`
+- ✅ 작업 현황: `./TASK.md`
+
+### 개발 워크플로우
+
+**Step 1: 작업 확인**
+```bash
+# TASK.md 확인 → 현재 진행 중인 작업 파악
+# docs/ 참조 → PRD, TECHNICAL_SPEC 확인
+# ../../docs/reference/ 참조 → API 문서 확인
+```
+
+**Step 2: 구현**
+```bash
+# TDS React Native 컴포넌트 사용 (온라인 문서)
+# Bedrock API 사용 (../../docs/reference/bedrock/)
+# 예제 참조 (../../example/)
+```
+
+**Step 3: 문서 업데이트**
+```bash
+# TASK.md 체크박스 업데이트
+# CLAUDE.md 필요 시 수정
+```
+
+**Step 4: 커밋**
+```bash
+git add .
+git commit -m "feat: [기능명] 구현"
+```
+
+---
+
+## 📝 작업 진행 상황
+
+### ✅ 완료된 작업
+- [x] 프로젝트 초기화
+- [x] [완료된 작업들]
+
+### 🔄 진행 중인 작업
+- [진행 중인 작업들]
+
+### ⏳ 예정된 작업
+- [예정된 작업들]
+
+---
+
+## 🎨 TDS React Native 컴포넌트 사용 예시
+
+### 기본 컴포넌트 임포트
+```typescript
+// ✅ React Native 앱에서 TDS React Native 사용
+import { Button, TextField, Dialog } from '@toss/tds-react-native';
+import { useDialog, useToast } from '@toss/tds-react-native';
+```
+
+### 자주 사용하는 컴포넌트
+⚠️ **공식 온라인 문서 참조**: https://tossmini-docs.toss.im/tds-react-native/
+
+- **Button**: https://tossmini-docs.toss.im/tds-react-native/components/button
+- **TextField**: https://tossmini-docs.toss.im/tds-react-native/components/text-field
+- **Dialog**: https://tossmini-docs.toss.im/tds-react-native/components/dialog
+- **BottomSheet**: https://tossmini-docs.toss.im/tds-react-native/components/bottom-sheet
+- **Toast**: https://tossmini-docs.toss.im/tds-react-native/hooks/use-toast
+
+### 프로젝트 타입 확인
+```bash
+# package.json 확인 (React Native 타입 검증)
+cat package.json | grep "@toss/tds-react-native"
+
+# ✅ React Native 프로젝트라면 있어야 함
+"@toss/tds-react-native": "^x.x.x"
+"react-native": "^x.x.x"
+"@granite-js/react-native": "^x.x.x"
+
+# ❌ WebView 패키지가 있으면 안됨!
+# "@toss/tds-mobile" 없어야 함
+# "react-dom" 없어야 함
+```
+
+---
+
+## 🚀 빠른 시작
+
+```bash
+# 1. 의존성 설치
+npm install
+# 또는
+yarn install
+
+# 2. 환경변수 설정
+cp .env.example .env
+# .env 파일 편집 (필요한 API 키 입력)
+
+# 3. iOS 의존성 설치
+cd ios && pod install && cd ..
+
+# 4. 개발 서버 실행
+npm run start
+
+# 5. 앱 실행
+# iOS
+npm run ios
+
+# Android
+npm run android
+```
+
+---
+
+## 📱 네이티브 설정
+
+### Android
+- [Android Studio 설정](../../docs/04-development/04-android.md)
+- SDK 버전: [최소 버전]
+- Gradle 설정: `android/build.gradle`
+
+### iOS
+- [Xcode 설정](../../docs/04-development/05-ios.md)
+- iOS 최소 버전: [최소 버전]
+- CocoaPods: `ios/Podfile`
+
+---
+
+## 📖 관련 문서
+
+### 상위 문서
+- [../../CLAUDE.md](../../CLAUDE.md) - APPinTOSS 프로젝트 루트
+- [../../QUICK_REFERENCE.md](../../QUICK_REFERENCE.md) - 빠른 참조 가이드
+- [../../REFERENCE_GUIDE.md](../../REFERENCE_GUIDE.md) - 참조 규칙 가이드
+
+### 현재 프로젝트 문서
+- [TASK.md](TASK.md) - 작업 진행 현황 (실시간 업데이트)
+- [README.md](README.md) - 프로젝트 소개
+- [docs/PRD.md](docs/PRD.md) - 제품 요구사항
+- [docs/TECHNICAL_SPEC.md](docs/TECHNICAL_SPEC.md) - 기술 사양서
+- [docs/DEVELOPMENT_GUIDE.md](docs/DEVELOPMENT_GUIDE.md) - 개발 가이드
+
+---
+
+**프로젝트 생성일**: [YYYY-MM-DD]
+**마지막 업데이트**: [YYYY-MM-DD]
+**버전**: 1.0
+**프로젝트 타입**: 📱 React Native (TDS React Native)
