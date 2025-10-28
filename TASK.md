@@ -71,31 +71,33 @@ docs/reference/claude.md
   - [x] PROJECT_TYPE_SYSTEM.md 생성
 
 ### Phase 4: 디렉토리 구조 재설계 (우선순위: 🟡 높음)
-- [ ] 4.1. 현재 구조 분석
+- [x] 4.1. 현재 구조 분석 ✅
   ```
   docs/
   ├── reference/
   │   ├── bedrock/ (모든 타입 공통)
   │   └── tds-mobile/ (WebView 전용) ← 잘못 분류됨
   ```
-- [ ] 4.2. 타입별 구조 제안
+- [x] 4.2. 타입별 구분 방법 결정 ✅
   ```
-  Option A: 타입별 분리
-  docs/
-  ├── reference/
-  │   ├── common/bedrock/ (공통)
-  │   ├── webview/tds-mobile/
-  │   └── react-native/tds-react-native/
+  선택: claude.md로 논리적 구분 (원본 보존)
 
-  Option B: 현재 구조 유지 + 명확한 표시
-  docs/
-  ├── reference/
-  │   ├── bedrock/ (공통)
-  │   ├── tds-mobile/ (WebView only)
-  │   └── README 또는 claude.md에서 명확히 구분
+  ❌ 물리적 디렉토리 이동 (원본 오염)
+  ✅ claude.md 파일로 타입 명시
+  ✅ 원본 디렉토리 구조 유지
   ```
-- [ ] 4.3. 최적 구조 결정
-- [ ] 4.4. 필요시 디렉토리 재구성
+- [x] 4.3. 원본 보존 원칙 확립 ✅
+  - docs/ = 공식 문서 원본 (수정 금지)
+  - example/ = 공식 예제 원본 (수정 금지)
+  - claude.md 파일만 추가/수정
+- [x] 4.4. 구조 확정 ✅
+  ```
+  docs/reference/
+  ├── bedrock/ (원본 유지)
+  ├── tds-mobile/ (원본 유지)
+  │   └── claude.md (새로 생성 - WebView 전용 명시)
+  └── claude.md (수정 - 타입별 구분 명확화)
+  ```
 
 ### Phase 5: 계층구조 파일 재작성 (우선순위: 🟡 높음)
 - [ ] 5.1. 루트 CLAUDE.md 수정
@@ -172,13 +174,13 @@ ui:
 - **Phase 1**: ✅ 3/3 (100%)
 - **Phase 2**: ✅ 3/3 (100%)
 - **Phase 3**: ✅ 3/3 (100%)
-- **Phase 4**: ⬜ 0/4 (0%)
+- **Phase 4**: ✅ 4/4 (100%)
 - **Phase 5**: ⬜ 0/6 (0%)
 - **Phase 6**: ⬜ 0/4 (0%)
 - **Phase 7**: ⬜ 0/4 (0%)
 - **Phase 8**: ⬜ 0/4 (0%)
 
-**전체 진행률**: 9/31 (29%)
+**전체 진행률**: 13/31 (42%)
 
 ---
 
@@ -205,7 +207,14 @@ ui:
 - ✅ 3.2: 타입 명시 방법 설계 (CLAUDE.md 선언 + package.json 자동 감지)
 - ✅ 3.3: 타입별 참조 루트 설계
 - ✅ PROJECT_TYPE_SYSTEM.md 생성 (상세한 타입 구분 시스템 문서화)
-- **다음 작업**: Phase 4 - 디렉토리 구조 재설계
+
+**17:10 - Phase 4 완료**
+- ✅ 4.1: 현재 구조 분석 (docs/reference/ 구조 파악)
+- ✅ 4.2: 타입별 구분 방법 결정 (claude.md 논리적 구분 선택)
+- ✅ 4.3: 원본 보존 원칙 확립 (docs/example 수정 금지, claude.md만 작업)
+- ✅ 4.4: 구조 확정 (원본 디렉토리 유지, claude.md로 타입 명시)
+- **중요 결정**: 물리적 디렉토리 이동 대신 claude.md 파일로 논리적 구분
+- **다음 작업**: Phase 5 - 계층구조 파일 재작성
 
 ---
 
