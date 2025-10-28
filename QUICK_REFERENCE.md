@@ -4,6 +4,17 @@
 
 ---
 
+## ⚠️ 프로젝트 타입별 UI 라이브러리
+
+**절대 혼용 금지**:
+- 🌐 **WebView 앱**: **TDS Mobile** (`@toss/tds-mobile`) + `react-dom` 필수
+- 📱 **React Native 앱**: **TDS React Native** (`@toss/tds-react-native`) + `react-native` 필수
+- 🎮 **Unity 앱**: Unity UI 시스템 (제한적 TDS 지원)
+
+**상세 안내**: [프로젝트 타입 구분 시스템](CLAUDE.md#프로젝트-타입-구분-시스템)
+
+---
+
 ## 📋 프로젝트 유형별 필수 문서
 
 ### 🎮 게임 앱 (React Native + Unity)
@@ -29,11 +40,13 @@
 
 ### 📱 React Native 앱
 
+**UI 라이브러리**: TDS React Native (`@toss/tds-react-native`) ⚠️
+
 #### 필수 읽기 순서
 ```
 1. docs/01-intro/01-overview.md
 2. docs/02-prepare/01-console-workspace.md
-3. docs/03-design/07-tds-mobile.md (TDS 디자인 시스템)
+3. https://tossmini-docs.toss.im/tds-react-native/ (TDS React Native 공식 문서)
 4. docs/04-development/04-android.md (Android 환경)
 5. docs/04-development/05-ios.md (iOS 환경)
 6. docs/04-development/03-react-native.md (Granite 프레임워크)
@@ -47,26 +60,38 @@
 - [네트워크 상태](docs/reference/bedrock/network/getNetworkStatus.md)
 
 #### TDS 컴포넌트
-- [Button](docs/reference/tds-mobile/components/button.md)
-- [TextField](docs/reference/tds-mobile/components/text-field.md)
-- [Dialog](docs/reference/tds-mobile/components/dialog.md)
-- [BottomSheet](docs/reference/tds-mobile/hooks/useBottomSheet.md)
+⚠️ **로컬 문서 없음** - 온라인 참조 필요:
+- [TDS React Native 공식 문서](https://tossmini-docs.toss.im/tds-react-native/)
+- Button, TextField, Dialog 등 (온라인 확인)
 
 ---
 
 ### 🌐 WebView 앱
 
+**UI 라이브러리**: TDS Mobile (`@toss/tds-mobile`) ✅
+
 #### 필수 읽기 순서
 ```
 1. docs/01-intro/01-overview.md
 2. docs/02-prepare/01-console-workspace.md
-3. docs/03-design/07-tds-mobile.md
+3. docs/03-design/07-tds-mobile.md (TDS Mobile 디자인 시스템)
 4. docs/04-development/06-webview.md (WebView 연동)
 5. docs/05-checklist/02-app-nongame.md
 ```
 
 #### 주요 API
-- 동일: React Native 앱과 유사
+- [화면 닫기](docs/reference/bedrock/screen-control/closeView.md) - 필수
+- [저장소](docs/reference/bedrock/storage/) - 로컬 데이터
+- [분석](docs/reference/bedrock/analytics/) - 이벤트 로깅
+- [네트워크 상태](docs/reference/bedrock/network/getNetworkStatus.md)
+
+#### TDS 컴포넌트
+✅ **로컬 문서 사용 가능**:
+- [Button](docs/reference/tds-mobile/components/button.md)
+- [TextField](docs/reference/tds-mobile/components/text-field.md)
+- [Dialog](docs/reference/tds-mobile/components/dialog.md)
+- [BottomSheet](docs/reference/tds-mobile/hooks/useBottomSheet.md)
+- [전체 67개 컴포넌트](docs/reference/tds-mobile/)
 
 ---
 
@@ -219,4 +244,5 @@
 
 ---
 
-**마지막 업데이트**: 2025-10-24
+**마지막 업데이트**: 2025-10-28
+**주요 변경**: 프로젝트 타입별 UI 라이브러리 구분 명확화 (WebView=TDS Mobile, React Native=TDS React Native)

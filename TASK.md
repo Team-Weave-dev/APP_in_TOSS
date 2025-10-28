@@ -107,10 +107,12 @@ docs/reference/claude.md
   - [x] 디렉토리 구조에 타입 명시
   - [x] 개발 워크플로우 타입별 수정
   - [x] 주의사항 타입 혼용 금지 추가
-- [ ] 5.2. QUICK_REFERENCE.md 수정
-  - [ ] 프로젝트 타입별 올바른 참조
-  - [ ] WebView → TDS Mobile
-  - [ ] React Native → TDS React Native
+- [x] 5.2. QUICK_REFERENCE.md 수정 ✅
+  - [x] 프로젝트 타입별 올바른 참조
+  - [x] WebView → TDS Mobile (로컬 문서 사용)
+  - [x] React Native → TDS React Native (온라인 문서 참조)
+  - [x] 타입별 UI 라이브러리 경고 추가
+  - [x] 각 섹션에 사용 가능한 문서 명시
 - [ ] 5.3. docs/reference/claude.md 수정
   - [ ] TDS Mobile 설명 수정 (WebView 전용)
   - [ ] TDS React Native 추가 (필요시)
@@ -178,12 +180,12 @@ ui:
 - **Phase 2**: ✅ 3/3 (100%)
 - **Phase 3**: ✅ 3/3 (100%)
 - **Phase 4**: ✅ 4/4 (100%)
-- **Phase 5**: 🔄 1/6 (17%)
+- **Phase 5**: 🔄 2/6 (33%)
 - **Phase 6**: ⬜ 0/4 (0%)
 - **Phase 7**: ⬜ 0/4 (0%)
 - **Phase 8**: ⬜ 0/4 (0%)
 
-**전체 진행률**: 14/31 (45%)
+**전체 진행률**: 15/31 (48%)
 
 ---
 
@@ -232,7 +234,21 @@ ui:
   - docs/ 섹션: 타입별 참조 방법 추가
   - 개발 워크플로우: TDS 컴포넌트 사용 시 타입별 차이 명시
   - 주의사항: 타입별 UI 라이브러리 혼용 금지 1순위로 추가
-- **다음 작업**: Phase 5.2 - QUICK_REFERENCE.md 수정
+
+**17:20 - Phase 5.2 완료**
+- ✅ 5.2: QUICK_REFERENCE.md 수정 완료
+- **발견된 오류 수정**:
+  - React Native 섹션이 TDS Mobile을 잘못 참조하고 있었음
+  - React Native → TDS React Native로 수정
+  - 온라인 문서 참조로 변경 (로컬 문서 없음)
+- **추가 내용**:
+  - 문서 상단에 "프로젝트 타입별 UI 라이브러리" 경고 추가
+  - WebView/React Native/Unity 각각 사용 가능한 UI 라이브러리 명시
+- **수정 내용**:
+  - React Native: TDS React Native 온라인 문서 참조
+  - WebView: TDS Mobile 로컬 문서 67개 사용 가능
+  - 각 섹션에 UI 라이브러리 명시 추가
+- **다음 작업**: Phase 5.3 - docs/reference/claude.md 수정
 
 ---
 
