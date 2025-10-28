@@ -4,6 +4,86 @@
 
 ---
 
+## 🔍 프로젝트 유형 구분 (필수 확인) ⭐
+
+**개발 시작 전 반드시 프로젝트 유형을 확인하세요!**
+
+### 📱 React Native 앱
+
+**특징**:
+- Granite 프레임워크 기반 (`@apps-in-toss/framework`)
+- 네이티브 컴포넌트 사용
+- 파일 기반 라우팅 (intoss:// scheme)
+- **TDS Mobile 필수 사용** ✅
+
+**확인 방법**:
+```json
+// package.json 확인
+{
+  "dependencies": {
+    "@granite-js/react-native": "...",
+    "@apps-in-toss/framework": "..."
+  }
+}
+```
+
+**UI 라이브러리**: [TDS Mobile](docs/reference/tds-mobile/claude.md) (필수)
+
+---
+
+### 🌐 WebView 앱
+
+**특징**:
+- 웹 프레임워크 기반 (Next.js, React, Vue 등)
+- HTML/CSS/JavaScript
+- 일반 웹 라우팅
+- **TDS Mobile 사용 불가** ❌
+
+**확인 방법**:
+```json
+// package.json 확인
+{
+  "dependencies": {
+    "next": "...",
+    "react-dom": "..."
+    // 또는 "vue", "angular" 등
+  }
+}
+```
+
+**UI 라이브러리**:
+- 일반 웹 UI 라이브러리 사용 (Material-UI, Ant Design, Chakra UI 등)
+- TDS Web (존재하는 경우)
+- 커스텀 CSS/Styled Components
+
+---
+
+### 🎮 Unity 게임 앱
+
+**특징**:
+- Unity Engine 기반
+- React Native 네이티브 래퍼 사용
+- Unity → React Native 브릿지 통신
+- **TDS Mobile 일부 사용 가능** (네비게이션 등)
+
+**확인 방법**: Unity 프로젝트 존재 + React Native 래퍼
+
+---
+
+### ⚠️ 혼용 주의
+
+**잘못된 예시**:
+- ❌ WebView 앱에서 TDS Mobile 컴포넌트 import
+- ❌ React Native 앱에서 일반 웹 UI 라이브러리 사용
+- ❌ 프로젝트 유형을 확인하지 않고 개발 시작
+
+**올바른 예시**:
+- ✅ React Native 앱 → TDS Mobile 사용
+- ✅ WebView 앱 → 웹 UI 라이브러리 사용
+- ✅ 개발 시작 전 package.json 확인
+
+---
+
 ## 📋 프로젝트 유형별 필수 문서
 
 ### 🎮 게임 앱 (React Native + Unity)
@@ -60,13 +140,22 @@
 ```
 1. docs/01-intro/01-overview.md
 2. docs/02-prepare/01-console-workspace.md
-3. docs/03-design/07-tds-mobile.md
-4. docs/04-development/06-webview.md (WebView 연동)
-5. docs/05-checklist/02-app-nongame.md
+3. docs/03-design/01-miniapp-branding-guide.md (브랜딩)
+4. docs/03-design/03-ux-writing.md (UX 라이팅)
+5. docs/04-development/06-webview.md (WebView 연동)
+6. docs/05-checklist/02-app-nongame.md
 ```
 
 #### 주요 API
-- 동일: React Native 앱과 유사
+- [화면 닫기](docs/reference/bedrock/screen-control/closeView.md) - 필수
+- [저장소](docs/reference/bedrock/storage/) - 로컬 데이터
+- [분석](docs/reference/bedrock/analytics/) - 이벤트 로깅
+- [네트워크 상태](docs/reference/bedrock/network/getNetworkStatus.md)
+
+#### UI 라이브러리
+- 일반 웹 UI 라이브러리 (Material-UI, Ant Design 등)
+- 커스텀 CSS 또는 Styled Components
+- ⚠️ **TDS Mobile 사용 불가** - React Native 전용
 
 ---
 
@@ -219,4 +308,4 @@
 
 ---
 
-**마지막 업데이트**: 2025-10-24
+**마지막 업데이트**: 2025-10-28
