@@ -119,9 +119,14 @@ docs/reference/claude.md
   - [x] 프로젝트 타입별 참조 경고 추가
   - [x] 컴포넌트 찾기 섹션 타입별 구분
   - [x] 자주 사용하는 컴포넌트 WebView/RN 구분
-- [ ] 5.4. docs/reference/tds-mobile/claude.md 수정
-  - [ ] WebView 전용 명시
-  - [ ] 잘못된 React Native 참조 제거
+- [x] 5.4. docs/reference/tds-mobile/claude.md 생성 ✅
+  - [x] WebView 전용 명시 (상단 경고)
+  - [x] React Native 사용 불가 경고 추가
+  - [x] 필수 의존성 명시 (react-dom 등)
+  - [x] 디렉토리 구조 안내 (67개 문서)
+  - [x] 빠른 참조 섹션 (자주 사용하는 컴포넌트)
+  - [x] 사용 패턴 및 프로젝트 설정 확인 방법
+  - [x] 연관 문서 링크
 - [ ] 5.5. docs/04-development/claude.md 수정
   - [ ] 프로젝트 유형별 올바른 TDS 매핑
 - [ ] 5.6. docs/03-design/claude.md 수정
@@ -183,12 +188,12 @@ ui:
 - **Phase 2**: ✅ 3/3 (100%)
 - **Phase 3**: ✅ 3/3 (100%)
 - **Phase 4**: ✅ 4/4 (100%)
-- **Phase 5**: 🔄 3/6 (50%)
+- **Phase 5**: 🔄 4/6 (67%)
 - **Phase 6**: ⬜ 0/4 (0%)
 - **Phase 7**: ⬜ 0/4 (0%)
 - **Phase 8**: ⬜ 0/4 (0%)
 
-**전체 진행률**: 16/31 (52%)
+**전체 진행률**: 17/31 (55%)
 
 ---
 
@@ -262,7 +267,20 @@ ui:
   - 필수 의존성 명시 (react-dom 등)
   - 컴포넌트 찾기: 타입별로 구분 (로컬/온라인)
   - 자주 사용하는 컴포넌트: WebView/React Native 분리
-- **다음 작업**: Phase 5.4 - docs/reference/tds-mobile/claude.md 생성
+
+**17:30 - Phase 5.4 완료**
+- ✅ 5.4: docs/reference/tds-mobile/claude.md 생성 완료
+- **신규 파일 생성** (기존에 없었음):
+  - TDS Mobile 디렉토리 전용 가이드 파일
+  - WebView 앱 전용 명시 (상단 경고)
+  - React Native 사용 불가 경고
+- **주요 내용**:
+  - 필수 의존성: react, react-dom, @emotion/react
+  - 디렉토리 구조: 67개 문서 (components 58, hooks 4, foundations 2, 기타 3)
+  - 빠른 참조: 입력/폼, 레이아웃, 피드백, 네비게이션별 분류
+  - 사용 패턴: 임포트 방법 및 프로젝트 설정 확인
+  - 연관 문서: WebView 개발 가이드, 디자인 가이드, 예제 코드
+- **다음 작업**: Phase 5.5 - docs/04-development/claude.md 수정
 
 ---
 
