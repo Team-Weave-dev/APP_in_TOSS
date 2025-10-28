@@ -1,0 +1,421 @@
+# [프로젝트명] 프로젝트 컨텍스트 가이드
+
+> **Apps in Toss Unity 앱**: [프로젝트 간단 설명]
+> **프로젝트 타입**: 🎮 Unity
+> **최종 업데이트**: [YYYY-MM-DD]
+> **상위 문서**: [../../CLAUDE.md](../../CLAUDE.md) (APPinTOSS 프로젝트 루트)
+
+---
+
+## ⚠️ 프로젝트 타입: Unity 게임/앱
+
+**이 프로젝트는 Unity 기반 Apps in Toss 앱입니다.**
+
+### ✅ 사용 가능한 기술
+- **게임 엔진**: Unity (최신 LTS 버전 권장)
+- **UI 시스템**: Unity UI (uGUI, UI Toolkit)
+- **통합 방식**: React Native wrapper (Unity 포팅)
+- **필수 의존성**:
+  ```json
+  {
+    "@apps-in-toss/framework": "latest",
+    "react-native": "latest",
+    "react-native-unity-view": "latest"
+  }
+  ```
+- **플랫폼**: iOS, Android (네이티브)
+
+### ⚠️ 제한사항
+- ⚠️ **TDS 지원 제한**: Unity UI 시스템 주로 사용
+- ⚠️ TDS Mobile/TDS React Native 직접 사용 불가
+- ✅ Bedrock SDK는 React Native 레이어에서 사용 가능
+
+### 📚 참조 문서
+- **Unity 개발 가이드**: [../../docs/04-development/07-unity.md](../../docs/04-development/07-unity.md)
+- **Bedrock SDK**: [../../docs/reference/bedrock/](../../docs/reference/bedrock/) (94개 API, RN 레이어에서 사용)
+- **React Native 통합**: [../../docs/04-development/03-react-native.md](../../docs/04-development/03-react-native.md)
+
+---
+
+## 📚 문서 계층 구조
+
+### 상위 참조 문서 (읽기 전용)
+```
+../../                          # APPinTOSS 프로젝트 루트
+├── CLAUDE.md                   # 루트 프로젝트 컨텍스트
+├── QUICK_REFERENCE.md          # 빠른 참조 가이드
+├── docs/                       # Apps in Toss 표준 문서 (참조 필수)
+│   ├── reference/bedrock/      # Bedrock SDK API 문서 (94개)
+│   ├── 04-development/         # 개발 가이드
+│   │   ├── 07-unity.md         # Unity 개발 가이드 ✅
+│   │   ├── 03-react-native.md  # React Native 래퍼 참조
+│   │   ├── 04-android.md       # Android 설정
+│   │   └── 05-ios.md           # iOS 설정
+│   └── 03-design/              # 디자인 가이드
+└── example/                    # Apps in Toss 예제 프로젝트 (참조 필수)
+    └── with-*/                 # API 활용 예제들
+```
+
+**참조 규칙**:
+- `../../docs/` - Apps in Toss 표준 문서, 읽기 전용
+- `../../example/` - 공식 예제 코드, 참조 전용 (주로 Bedrock SDK)
+- Unity 게임 로직: Unity 프로젝트 내에서 구현
+- Bedrock API 통합: React Native 래퍼 레이어에서 구현
+
+### 현재 프로젝트 문서 (읽기/쓰기)
+```
+./                              # [프로젝트명] 루트
+├── CLAUDE.md                   # 현재 파일 (프로젝트 컨텍스트)
+├── TASK.md                     # 작업 진행 현황 (실시간 업데이트)
+├── README.md                   # 프로젝트 소개
+├── docs/                       # 프로젝트 문서
+│   ├── GAME_DESIGN.md          # 게임 디자인 문서
+│   ├── TECHNICAL_SPEC.md       # 기술 사양서
+│   └── DEVELOPMENT_GUIDE.md    # 개발 가이드
+├── unity/                      # Unity 프로젝트 디렉토리
+│   ├── Assets/                 # 게임 에셋
+│   ├── Packages/               # Unity 패키지
+│   └── ProjectSettings/        # 프로젝트 설정
+├── rn-wrapper/                 # React Native 래퍼
+│   ├── src/                    # RN 래퍼 소스
+│   ├── android/                # Android 네이티브
+│   ├── ios/                    # iOS 네이티브
+│   └── package.json            # RN 의존성
+└── TASK.md                     # 작업 진행 현황
+```
+
+---
+
+## 🎯 프로젝트 개요
+
+**프로젝트명**: [프로젝트명]
+**목적**: [게임/앱 목적 및 핵심 가치]
+**플랫폼**: Apps in Toss (Unity)
+**개발 상태**: [개발 진행 상태]
+
+### 핵심 기능
+1. [핵심 게임플레이 1]
+2. [핵심 게임플레이 2]
+3. [핵심 게임플레이 3]
+
+### 수익 모델 (선택사항)
+- [수익 모델 설명]
+
+---
+
+## 🏗️ 기술 스택
+
+### Core (Unity 게임)
+- **게임 엔진**: Unity [버전] LTS
+- **스크립팅**: C#
+- **UI**: Unity UI (uGUI) / UI Toolkit
+
+### Apps in Toss 통합
+- **래퍼**: React Native (`react-native-unity-view`)
+- **SDK**: `@apps-in-toss/framework`
+- **Bedrock API**: React Native 레이어에서 사용
+  - 참조: `../../docs/reference/bedrock/`
+
+### Unity 패키지 (선택사항)
+- **물리**: [Physics 엔진]
+- **그래픽**: [렌더링 파이프라인]
+- **네트워킹**: [멀티플레이어 솔루션]
+- **분석**: [Unity Analytics 등]
+
+---
+
+## 📂 프로젝트 구조
+
+```
+[프로젝트명]/
+├── unity/                      # Unity 프로젝트
+│   ├── Assets/
+│   │   ├── Scenes/             # 게임 씬
+│   │   ├── Scripts/            # C# 스크립트
+│   │   ├── Prefabs/            # 프리팹
+│   │   ├── Materials/          # 머티리얼
+│   │   ├── Textures/           # 텍스처
+│   │   └── UI/                 # UI 에셋
+│   ├── Packages/               # Unity 패키지
+│   └── ProjectSettings/        # 프로젝트 설정
+│
+├── rn-wrapper/                 # React Native 래퍼
+│   ├── src/
+│   │   ├── UnityView.tsx       # Unity 뷰 컴포넌트
+│   │   ├── BedrockBridge.ts    # Bedrock API 브릿지
+│   │   └── types/              # 타입 정의
+│   ├── android/                # Android 네이티브
+│   ├── ios/                    # iOS 네이티브
+│   └── package.json            # ✅ RN 의존성
+│
+├── docs/                       # 프로젝트 문서
+├── TASK.md                     # 작업 진행 현황
+└── CLAUDE.md                   # 현재 파일
+```
+
+---
+
+## 🔑 환경 변수
+
+```bash
+# .env (React Native 래퍼용)
+
+# Apps in Toss
+INTOSS_APP_NAME=[앱이름]
+INTOSS_DEBUG=true
+
+# Unity 빌드 설정
+UNITY_PROJECT_PATH=./unity
+UNITY_BUILD_TARGET=[iOS|Android]
+
+# 기타 API 키
+# [필요한 환경 변수 추가]
+```
+
+---
+
+## 📚 참조 문서
+
+### 필수 참조
+- [TASK.md](TASK.md) - 작업 진행 현황 및 계획
+- [docs/GAME_DESIGN.md](docs/GAME_DESIGN.md) - 게임 디자인 문서
+- [docs/TECHNICAL_SPEC.md](docs/TECHNICAL_SPEC.md) - 기술 사양서
+
+### Unity 개발 가이드
+- [Unity 개발](../../docs/04-development/07-unity.md) - Unity 포팅 가이드 ✅
+- [React Native 통합](../../docs/04-development/03-react-native.md) - RN 래퍼 참조
+- [Android 설정](../../docs/04-development/04-android.md) - Android Studio, SDK 설정
+- [iOS 설정](../../docs/04-development/05-ios.md) - Xcode, CocoaPods 설정
+- [샌드박스 테스트](../../docs/04-development/08-sandbox.md) - 로컬 테스트 환경
+- [토스앱 테스트](../../docs/04-development/09-toss.md) - 실제 환경 테스트
+
+### Bedrock SDK (React Native 레이어)
+- [Bedrock SDK](../../docs/reference/bedrock/) - 94개 API
+- 카테고리별: `ads/`, `analytics/`, `location/`, `navigation/`, `permission/`, `storage/` 등
+- ⚠️ **주의**: Unity → RN 브릿지를 통해 사용
+
+### 예제 코드
+- [API 예제들](../../example/) - Bedrock SDK 활용 예제 (RN 래퍼 참조)
+
+---
+
+## ⚠️ 중요 규칙
+
+### 프로젝트 타입 (Unity 게임)
+- ✅ Unity UI 시스템 사용 (uGUI, UI Toolkit)
+- ✅ React Native 래퍼로 Apps in Toss 통합
+- ⚠️ TDS 지원 제한 (Unity UI 주로 사용)
+- ❌ TDS Mobile/TDS React Native 직접 사용 불가
+
+### Unity → React Native 통신
+- ✅ Unity → RN: C# 메시지 전송
+- ✅ RN → Unity: JavaScript → C# 메시지 전달
+- ✅ Bedrock SDK: RN 레이어에서 호출 후 Unity로 결과 전달
+
+### 코드 작성
+- ✅ Unity 스크립트: **C#**
+- ✅ RN 래퍼: **TypeScript**
+- ✅ 문서/설명: **한글**
+- ✅ Bedrock SDK 사용 시 반드시 `../../docs/reference/bedrock/` 확인
+- ❌ Deprecated API 사용 금지
+
+### 파일 위치
+- ✅ Unity 개발: `./unity/` 디렉토리
+- ✅ RN 래퍼: `./rn-wrapper/` 디렉토리
+- ❌ `../../` (상위 디렉토리) 수정 금지 (읽기 전용)
+
+### 문서 참조
+- ✅ Unity 가이드: `../../docs/04-development/07-unity.md`
+- ✅ Bedrock API: `../../docs/reference/bedrock/` (RN 레이어)
+- ✅ 예제 코드: `../../example/`
+- ✅ 프로젝트 문서: `./docs/`
+- ✅ 작업 현황: `./TASK.md`
+
+### 개발 워크플로우
+
+**Step 1: 작업 확인**
+```bash
+# TASK.md 확인 → 현재 진행 중인 작업 파악
+# docs/ 참조 → GAME_DESIGN, TECHNICAL_SPEC 확인
+# ../../docs/reference/ 참조 → Bedrock API 문서 확인
+```
+
+**Step 2: Unity 개발**
+```bash
+# Unity Editor에서 게임 로직 구현
+# C# 스크립트 작성
+# Unity UI 디자인
+```
+
+**Step 3: React Native 래퍼 구현**
+```bash
+# Unity → RN 브릿지 구현
+# Bedrock SDK 통합 (../../docs/reference/bedrock/)
+# 예제 참조 (../../example/)
+```
+
+**Step 4: 문서 업데이트**
+```bash
+# TASK.md 체크박스 업데이트
+# CLAUDE.md 필요 시 수정
+```
+
+**Step 5: 커밋**
+```bash
+git add .
+git commit -m "feat: [기능명] 구현"
+```
+
+---
+
+## 📝 작업 진행 상황
+
+### ✅ 완료된 작업
+- [x] Unity 프로젝트 초기화
+- [x] React Native 래퍼 설정
+- [x] [완료된 작업들]
+
+### 🔄 진행 중인 작업
+- [진행 중인 작업들]
+
+### ⏳ 예정된 작업
+- [예정된 작업들]
+
+---
+
+## 🎮 Unity → React Native 통신 예시
+
+### Unity에서 Bedrock API 호출
+```csharp
+// Unity C# 스크립트
+using UnityEngine;
+
+public class GameManager : MonoBehaviour
+{
+    // RN 래퍼로 메시지 전송
+    public void CallBedrockAPI()
+    {
+        string message = JsonUtility.ToJson(new {
+            type = "bedrock",
+            api = "closeView",
+            params = new {}
+        });
+
+        // React Native로 전송
+        SendMessageToReactNative(message);
+    }
+
+    // RN에서 응답 수신
+    public void OnBedrockResponse(string response)
+    {
+        Debug.Log("Bedrock response: " + response);
+    }
+}
+```
+
+### React Native 래퍼에서 Bedrock 처리
+```typescript
+// rn-wrapper/src/BedrockBridge.ts
+import { closeView } from '@apps-in-toss/framework';
+
+export class BedrockBridge {
+  // Unity로부터 메시지 수신
+  async handleUnityMessage(message: string) {
+    const { type, api, params } = JSON.parse(message);
+
+    if (type === 'bedrock') {
+      switch (api) {
+        case 'closeView':
+          await closeView();
+          this.sendToUnity({ success: true });
+          break;
+        // ... 다른 API 처리
+      }
+    }
+  }
+
+  // Unity로 응답 전송
+  sendToUnity(response: any) {
+    // Unity View로 메시지 전송
+  }
+}
+```
+
+---
+
+## 🚀 빠른 시작
+
+### Unity 개발
+```bash
+# 1. Unity 프로젝트 열기
+# Unity Hub에서 unity/ 디렉토리 열기
+
+# 2. 필요한 Unity 패키지 설치
+# Package Manager에서 필요한 패키지 추가
+```
+
+### React Native 래퍼
+```bash
+# 1. RN 래퍼 의존성 설치
+cd rn-wrapper
+npm install
+# 또는
+yarn install
+
+# 2. 환경변수 설정
+cp .env.example .env
+# .env 파일 편집
+
+# 3. iOS 의존성 설치
+cd ios && pod install && cd ..
+
+# 4. 앱 실행
+# iOS
+npm run ios
+
+# Android
+npm run android
+```
+
+---
+
+## 🏗️ Unity 빌드 설정
+
+### Android
+- Build Settings → Android
+- Minimum API Level: [최소 버전]
+- Target API Level: [타겟 버전]
+- IL2CPP 권장
+
+### iOS
+- Build Settings → iOS
+- Minimum iOS Version: [최소 버전]
+- Architecture: ARM64
+- IL2CPP 권장
+
+### Export 설정
+- Export to React Native wrapper
+- Build to: `rn-wrapper/unity-builds/`
+
+---
+
+## 📖 관련 문서
+
+### 상위 문서
+- [../../CLAUDE.md](../../CLAUDE.md) - APPinTOSS 프로젝트 루트
+- [../../QUICK_REFERENCE.md](../../QUICK_REFERENCE.md) - 빠른 참조 가이드
+- [../../REFERENCE_GUIDE.md](../../REFERENCE_GUIDE.md) - 참조 규칙 가이드
+
+### 현재 프로젝트 문서
+- [TASK.md](TASK.md) - 작업 진행 현황 (실시간 업데이트)
+- [README.md](README.md) - 프로젝트 소개
+- [docs/GAME_DESIGN.md](docs/GAME_DESIGN.md) - 게임 디자인 문서
+- [docs/TECHNICAL_SPEC.md](docs/TECHNICAL_SPEC.md) - 기술 사양서
+- [docs/DEVELOPMENT_GUIDE.md](docs/DEVELOPMENT_GUIDE.md) - 개발 가이드
+
+---
+
+**프로젝트 생성일**: [YYYY-MM-DD]
+**마지막 업데이트**: [YYYY-MM-DD]
+**버전**: 1.0
+**프로젝트 타입**: 🎮 Unity (Unity UI + React Native wrapper)
