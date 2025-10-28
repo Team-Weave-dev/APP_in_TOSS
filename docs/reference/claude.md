@@ -24,19 +24,16 @@
 - 🌐 네트워크 (network)
 - 💾 저장소 (storage)
 
-### 2. TDS Mobile (tds-mobile/) ⚠️ React Native 전용
+### 2. TDS Mobile (tds-mobile/)
 - **문서 수**: 67개 컴포넌트 + Hook
 - **내용**: 토스 디자인 시스템
-- **대상**: **React Native 앱 개발자**, 디자이너
+- **대상**: 디자이너, 프론트엔드 개발자
 - **원본**: https://tossmini-docs.toss.im/tds-mobile/
-- **⚠️ 중요**: **React Native 앱에서만 사용 가능** (WebView 앱 사용 불가)
 
 **주요 카테고리**:
 - 🎨 Foundations (색상, 타이포그래피)
 - 🧩 Components (Button, Dialog, Modal 등)
 - 🪝 Hooks (useDialog, useToast 등)
-
-**프로젝트 유형 확인**: [QUICK_REFERENCE.md](../../QUICK_REFERENCE.md#프로젝트-유형-구분-필수-확인-)
 
 ## 🎯 API 사용 패턴
 

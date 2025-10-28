@@ -44,19 +44,10 @@ Apps in Toss 앱의 **UI/UX 디자인 가이드라인**과 디자인 시스템�
 
 ## 💡 핵심 포인트
 
-### ⚠️ 프로젝트 유형별 UI 라이브러리
-
-**React Native 앱**:
-- ✅ **TDS Mobile 필수 사용**
+### TDS Mobile 필수 사용
+- ✅ 모든 UI는 TDS 컴포넌트 기반으로 제작
 - ✅ 공식 Figma 라이브러리 활용 (prepare/01-design.md)
 - 📚 상세 문서: [reference/tds-mobile](../reference/tds-mobile/)
-
-**WebView 앱**:
-- ❌ **TDS Mobile 사용 불가** (React Native 전용)
-- ✅ 일반 웹 UI 라이브러리 사용 (Material-UI, Ant Design 등)
-- ✅ 브랜딩 가이드는 동일하게 적용 (01-miniapp-branding-guide.md)
-
-자세한 구분: [QUICK_REFERENCE.md](../../QUICK_REFERENCE.md#프로젝트-유형-구분-필수-확인-)
 
 ### 브랜딩 가이드 준수
 - ✅ 네비게이션 바 디자인 규칙 (01)
