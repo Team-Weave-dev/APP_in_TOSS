@@ -32,18 +32,19 @@ docs/reference/claude.md
 - [x] 1.3. 복구 완료 확인 ✅
 
 ### Phase 2: 공식 문서 재확인 (우선순위: 🔴 최고)
-- [ ] 2.1. Apps in Toss 공식 문서 구조 분석
-  - [ ] WebView 개발 가이드 분석
-  - [ ] React Native 개발 가이드 분석
-  - [ ] TDS Mobile 공식 문서 분석
-  - [ ] TDS React Native 공식 문서 분석
-- [ ] 2.2. 현재 수집된 문서 검증
-  - [ ] docs/reference/tds-mobile/ (67개 문서) 검증
-  - [ ] docs/reference/bedrock/ (94개 API) 검증
-- [ ] 2.3. 정확한 기술 스택 매핑 정리
+- [x] 2.1. Apps in Toss 공식 문서 구조 분석 ✅
+  - [x] WebView 개발 가이드 분석
+  - [x] React Native 개발 가이드 분석
+  - [x] TDS Mobile 공식 문서 분석
+  - [x] TDS React Native 공식 문서 분석
+- [x] 2.2. 현재 수집된 문서 검증 ✅
+  - [x] docs/reference/tds-mobile/ (67개 문서) 검증
+  - [x] docs/reference/bedrock/ (94개 API) 검증
+- [x] 2.3. 정확한 기술 스택 매핑 정리 ✅
+  - [x] TECH_STACK_MAPPING.md 생성
 
 ### Phase 3: 프로젝트 타입 구분 시스템 설계 (우선순위: 🟡 높음)
-- [ ] 3.1. 프로젝트 타입 정의
+- [x] 3.1. 프로젝트 타입 정의 ✅
   ```
   Type 1: WebView App
   - Framework: @apps-in-toss/web-framework
@@ -60,8 +61,14 @@ docs/reference/claude.md
   - UI: Limited TDS support
   - Tech: Unity, C#
   ```
-- [ ] 3.2. 프로젝트별 타입 명시 방법 설계
-- [ ] 3.3. 타입별 참조 루트 설계
+- [x] 3.2. 프로젝트별 타입 명시 방법 설계 ✅
+  - [x] CLAUDE.md 선언 방식
+  - [x] package.json 자동 감지
+  - [x] .appintoss.yml 선택적 설정
+- [x] 3.3. 타입별 참조 루트 설계 ✅
+  - [x] WebView 참조 경로
+  - [x] React Native 참조 경로
+  - [x] PROJECT_TYPE_SYSTEM.md 생성
 
 ### Phase 4: 디렉토리 구조 재설계 (우선순위: 🟡 높음)
 - [ ] 4.1. 현재 구조 분석
@@ -163,15 +170,15 @@ ui:
 ## 📊 진행 상황
 
 - **Phase 1**: ✅ 3/3 (100%)
-- **Phase 2**: ⬜ 0/3 (0%)
-- **Phase 3**: ⬜ 0/3 (0%)
+- **Phase 2**: ✅ 3/3 (100%)
+- **Phase 3**: ✅ 3/3 (100%)
 - **Phase 4**: ⬜ 0/4 (0%)
 - **Phase 5**: ⬜ 0/6 (0%)
 - **Phase 6**: ⬜ 0/4 (0%)
 - **Phase 7**: ⬜ 0/4 (0%)
 - **Phase 8**: ⬜ 0/4 (0%)
 
-**전체 진행률**: 3/31 (10%)
+**전체 진행률**: 9/31 (29%)
 
 ---
 
@@ -187,7 +194,18 @@ ui:
 - ✅ 1.1: git revert efcd89d 성공 (5개 파일 복구, 390줄 제거)
 - ✅ 1.2: CLAUDE.md에 TASK.md 사용 규칙 추가
 - ✅ 1.3: 복구 완료 확인
-- **다음 작업**: Phase 2 - 공식 문서 재확인
+
+**16:55 - Phase 2 완료**
+- ✅ 2.1: 공식 문서 구조 분석 (WebView, React Native, TDS 문서 모두 확인)
+- ✅ 2.2: 수집된 문서 검증 (67개 TDS Mobile 파일 확인)
+- ✅ 2.3: TECH_STACK_MAPPING.md 생성 (정확한 기술 스택 매핑 문서화)
+
+**17:00 - Phase 3 완료**
+- ✅ 3.1: 프로젝트 타입 정의 (WebView, React Native, Unity)
+- ✅ 3.2: 타입 명시 방법 설계 (CLAUDE.md 선언 + package.json 자동 감지)
+- ✅ 3.3: 타입별 참조 루트 설계
+- ✅ PROJECT_TYPE_SYSTEM.md 생성 (상세한 타입 구분 시스템 문서화)
+- **다음 작업**: Phase 4 - 디렉토리 구조 재설계
 
 ---
 
