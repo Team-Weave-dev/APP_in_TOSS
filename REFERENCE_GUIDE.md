@@ -36,6 +36,67 @@ APPinTOSS/                     # 루트 (표준 참조 베이스)
 
 ---
 
+## 프로젝트 타입 구분 시스템
+
+**중요**: Apps in Toss는 **3가지 프로젝트 타입**을 지원하며, 각 타입은 **서로 다른 UI 라이브러리**를 사용합니다!
+
+### 지원 프로젝트 타입
+
+#### 🌐 Type 1: WebView 앱 (Web React)
+- **프레임워크**: `@apps-in-toss/web-framework`
+- **UI 라이브러리**: **TDS Mobile** (`@toss/tds-mobile`)
+- **필수 의존성**: `react-dom`
+- **문서**: [TDS Mobile (로컬 67개)](docs/reference/tds-mobile/)
+- **공식**: https://tossmini-docs.toss.im/tds-mobile/
+- **템플릿**: [templates/webview-project-CLAUDE.md.template](templates/webview-project-CLAUDE.md.template)
+
+#### 📱 Type 2: React Native 앱
+- **프레임워크**: Granite (`@granite-js/react-native`)
+- **UI 라이브러리**: **TDS React Native** (`@toss/tds-react-native`)
+- **필수 의존성**: `react-native`
+- **문서**: https://tossmini-docs.toss.im/tds-react-native/ (온라인만)
+- **템플릿**: [templates/react-native-project-CLAUDE.md.template](templates/react-native-project-CLAUDE.md.template)
+
+#### 🎮 Type 3: Unity 게임/앱
+- **게임 엔진**: Unity + React Native wrapper
+- **UI 시스템**: Unity UI (제한적 TDS 지원)
+- **문서**: [Unity 개발 가이드](docs/04-development/07-unity.md)
+- **템플릿**: [templates/unity-project-CLAUDE.md.template](templates/unity-project-CLAUDE.md.template)
+
+### ⚠️ 타입별 주의사항
+
+**절대 혼용 금지**:
+- ❌ WebView 앱에서 `@toss/tds-react-native` 사용
+- ❌ React Native 앱에서 `@toss/tds-mobile` 사용
+- ❌ React Native 앱에서 `react-dom` 사용
+
+**프로젝트 타입 확인**:
+```bash
+# WebView 프로젝트 확인
+cat package.json | grep "@toss/tds-mobile"    # 있어야 함
+cat package.json | grep "react-dom"           # 있어야 함
+
+# React Native 프로젝트 확인
+cat package.json | grep "@toss/tds-react-native"  # 있어야 함
+cat package.json | grep "react-native"        # 있어야 함
+```
+
+**템플릿 사용**:
+```bash
+# 새 WebView 프로젝트 생성
+cp templates/webview-project-CLAUDE.md.template project/my-app/CLAUDE.md
+
+# 새 React Native 프로젝트 생성
+cp templates/react-native-project-CLAUDE.md.template project/my-app/CLAUDE.md
+
+# 새 Unity 프로젝트 생성
+cp templates/unity-project-CLAUDE.md.template project/my-app/CLAUDE.md
+```
+
+**상세 가이드**: [templates/TEMPLATE_GUIDE.md](templates/TEMPLATE_GUIDE.md)
+
+---
+
 ## 참조 규칙
 
 ### 1. 문서 참조 (/docs)
@@ -44,8 +105,9 @@ APPinTOSS/                     # 루트 (표준 참조 베이스)
 
 **참조 대상**:
 - **가이드 문서**: 개발 프로세스, 디자인, 마케팅, 수익화 등 (78개)
-- **Bedrock SDK API**: React Native 개발용 API 레퍼런스 (94개)
-- **TDS Mobile**: UI 컴포넌트 디자인 시스템 (67개)
+- **Bedrock SDK API**: 공통 API 레퍼런스 (94개) - 모든 타입 공통
+- **TDS Mobile**: WebView 앱 전용 UI 컴포넌트 (67개) ⚠️
+- **TDS React Native**: React Native 앱 전용 (온라인만) ⚠️
 
 **사용 방법**:
 ```bash
@@ -289,7 +351,8 @@ cd ../projects/my-new-app
 |---------|------|----------|-----------|
 | `/docs` | API 레퍼런스 및 가이드 문서 | 읽기 전용 | 루트 레벨 |
 | `/example` | 공식 예제 코드 | 읽기 전용 | 루트 레벨 (Git) |
-| `/projects` | 개발 프로젝트 | 읽기/쓰기 | 각 프로젝트 |
+| `/templates` | 프로젝트 타입별 템플릿 | 읽기 전용 | 루트 레벨 |
+| `/project` | 개발 프로젝트 | 읽기/쓰기 | 각 프로젝트 |
 
 ---
 
@@ -305,4 +368,5 @@ cd ../projects/my-new-app
 
 ---
 
-**마지막 업데이트**: 2025-10-24
+**마지막 업데이트**: 2025-10-28
+**주요 변경**: 프로젝트 타입 구분 시스템 추가 (WebView, React Native, Unity)
