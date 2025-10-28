@@ -133,8 +133,12 @@ docs/reference/claude.md
   - [x] 프로젝트 유형별 필수 문서: TDS 매핑 명확화
   - [x] 주의사항: 타입별 TDS 확인 1순위로 추가
   - [x] 연관 디렉토리: TDS Mobile 링크 추가
-- [ ] 5.6. docs/03-design/claude.md 수정
-  - [ ] 프로젝트 유형별 UI 라이브러리 올바른 매핑
+- [x] 5.6. docs/03-design/claude.md 수정 ✅
+  - [x] 프로젝트 타입별 디자인 시스템 섹션 추가
+  - [x] TDS Mobile "WebView 전용" 표시
+  - [x] 읽기 순서: WebView vs React Native 분리
+  - [x] 핵심 포인트: 타입별 TDS 사용 경고
+  - [x] 연관 디렉토리: TDS Mobile/TDS RN 구분
 
 ### Phase 6: 프로젝트 템플릿 생성 (우선순위: 🟢 보통)
 - [ ] 6.1. WebView 프로젝트 CLAUDE.md 템플릿
@@ -192,12 +196,12 @@ ui:
 - **Phase 2**: ✅ 3/3 (100%)
 - **Phase 3**: ✅ 3/3 (100%)
 - **Phase 4**: ✅ 4/4 (100%)
-- **Phase 5**: 🔄 5/6 (83%)
+- **Phase 5**: ✅ 6/6 (100%) 🎉
 - **Phase 6**: ⬜ 0/4 (0%)
 - **Phase 7**: ⬜ 0/4 (0%)
 - **Phase 8**: ⬜ 0/4 (0%)
 
-**전체 진행률**: 18/31 (58%)
+**전체 진행률**: 19/31 (61%)
 
 ---
 
@@ -298,7 +302,24 @@ ui:
     * Unity: Unity UI
   - 주의사항: 타입별 TDS 확인을 1순위로 추가
   - 연관 디렉토리: TDS Mobile 로컬 문서 링크 추가
-- **다음 작업**: Phase 5.6 - docs/03-design/claude.md 수정 (마지막!)
+
+**17:40 - Phase 5.6 완료 - Phase 5 전체 완료! 🎉**
+- ✅ 5.6: docs/03-design/claude.md 수정 완료
+- **추가 내용**:
+  - 문서 상단에 "프로젝트 타입별 디자인 시스템" 섹션
+  - WebView (TDS Mobile) vs React Native (TDS RN) vs Unity 구분
+- **수정 내용**:
+  - TDS Mobile: "WebView 전용" 표시
+  - 읽기 순서: WebView/React Native 앱 디자인으로 분리
+  - 핵심 포인트: "타입별 TDS 사용" + "절대 혼용 금지" 경고
+  - 연관 디렉토리: TDS Mobile (로컬 67개) vs TDS RN (온라인) 구분
+- **Phase 5 전체 완료**: 계층구조 파일 재작성 6/6 (100%)
+  * 루트 CLAUDE.md, QUICK_REFERENCE.md 수정
+  * docs/reference/claude.md 수정
+  * docs/reference/tds-mobile/claude.md 신규 생성
+  * docs/04-development/claude.md 수정
+  * docs/03-design/claude.md 수정
+- **다음 작업**: Phase 6-8 (템플릿 생성, 검증, 커밋) 또는 사용자 확인
 
 ---
 
