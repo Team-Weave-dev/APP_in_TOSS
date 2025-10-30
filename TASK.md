@@ -1,387 +1,240 @@
-# Apps in Toss 문서 계층구조 리팩토링 작업
+# Apps in Toss 표준 규칙 참조 시스템 개선 작업
 
-> **작업 시작**: 2025-10-28
-> **목표**: 공식 문서 기반 올바른 계층구조 재구축 및 프로젝트 타입 구분 시스템 구축
+> **작업 시작**: 2025-10-30
+> **목표**: 모든 하위 문서에서 상위 표준 규칙들이 일관되게 참조되도록 개선
+> **핵심 문제**: UX Writing 규칙(~해요체 등) 및 기타 주요 규칙들이 하위 claude.md 파일에 명시되지 않음
 
 ---
 
 ## 🚨 발견된 문제
 
-### 핵심 오류
-- ❌ TDS Mobile을 React Native 전용으로 잘못 표시
-- ✅ 실제: TDS Mobile은 WebView(Web React) 전용
-- ❌ 모든 claude.md 파일에서 반대로 설명됨
-- 📅 잘못된 커밋: efcd89d (2025-10-28)
+### 핵심 문제
+- ❌ **하위 프로젝트에서 ~해요체 규칙 누락**: ROULETTE은 명시되어 있으나 다른 claude.md 파일들은 미명시
+- ❌ **주요 표준 규칙 일부 누락**: UX Writing, 타입 구분, 언어 규칙 등이 하위 문서에 일관되게 명시되지 않음
+- ❌ **계층적 참조 불완전**: 상위 문서의 규칙들이 하위 문서에서 제대로 참조되지 않음
 
 ### 영향 범위
 ```
-QUICK_REFERENCE.md
-docs/reference/tds-mobile/claude.md (새로 생성)
-docs/04-development/claude.md
-docs/03-design/claude.md
-docs/reference/claude.md
+루트 CLAUDE.md (표준 정의) ✅
+├─ docs/claude.md ❓ (규칙 참조 불완전)
+│  ├─ docs/01-intro/claude.md ❓
+│  ├─ docs/02-prepare/claude.md ❓
+│  ├─ docs/03-design/claude.md ❓
+│  ├─ docs/04-development/claude.md ❓
+│  └─ ... (기타 docs/*/claude.md)
+├─ example/claude.md ❓ (규칙 참조 불완전)
+└─ project/ROULETTE/CLAUDE.md ✅ (UX Writing 규칙 명시됨)
 ```
 
 ---
 
 ## 📋 작업 계획
 
-### Phase 1: 긴급 복구 (우선순위: 🔴 최고)
-- [x] 1.1. 잘못된 커밋 되돌리기 (git revert efcd89d) ✅
-- [x] 1.2. TASK.md 규칙을 CLAUDE.md에 추가 ✅
-- [x] 1.3. 복구 완료 확인 ✅
+### Phase 1: 표준 규칙 분석 및 정리 (우선순위: 🔴 최고)
+- [ ] 1.1. 루트 CLAUDE.md 주요 규칙 추출
+- [ ] 1.2. 공식 문서 (docs/03-design/03-ux-writing.md) 규칙 분석
+- [ ] 1.3. ROULETTE 프로젝트 규칙 명시 방식 분석
+- [ ] 1.4. 표준 규칙 목록 작성 (STANDARD_RULES.md 생성)
 
-### Phase 2: 공식 문서 재확인 (우선순위: 🔴 최고)
-- [x] 2.1. Apps in Toss 공식 문서 구조 분석 ✅
-  - [x] WebView 개발 가이드 분석
-  - [x] React Native 개발 가이드 분석
-  - [x] TDS Mobile 공식 문서 분석
-  - [x] TDS React Native 공식 문서 분석
-- [x] 2.2. 현재 수집된 문서 검증 ✅
-  - [x] docs/reference/tds-mobile/ (67개 문서) 검증
-  - [x] docs/reference/bedrock/ (94개 API) 검증
-- [x] 2.3. 정확한 기술 스택 매핑 정리 ✅
-  - [x] TECH_STACK_MAPPING.md 생성
+**핵심 규칙**:
+1. **UX Writing** (공식 문서 기준)
+   - ~해요체 사용 (상황/맥락 불문)
+   - 능동적 말하기 (됐어요 → 했어요)
+   - 긍정적 말하기 (없어요 → 있어요)
 
-### Phase 3: 프로젝트 타입 구분 시스템 설계 (우선순위: 🟡 높음)
-- [x] 3.1. 프로젝트 타입 정의 ✅
-  ```
-  Type 1: WebView App
-  - Framework: @apps-in-toss/web-framework
-  - UI: TDS Mobile (@toss/tds-mobile)
-  - Tech: React 18+, react-dom, Vite/Webpack
+2. **언어 규칙**
+   - 문서/커뮤니케이션: 한글
+   - 코드/파일명/변수명: 영어
 
-  Type 2: React Native App
-  - Framework: Granite (@granite-js/react-native)
-  - UI: TDS React Native (@toss/tds-react-native)
-  - Tech: React Native, Metro
+3. **프로젝트 타입 구분**
+   - WebView: TDS Mobile
+   - React Native: TDS React Native
+   - Unity: Unity UI
+   - 혼용 절대 금지
 
-  Type 3: Unity Game App
-  - Framework: Unity + React Native wrapper
-  - UI: Limited TDS support
-  - Tech: Unity, C#
-  ```
-- [x] 3.2. 프로젝트별 타입 명시 방법 설계 ✅
-  - [x] CLAUDE.md 선언 방식
-  - [x] package.json 자동 감지
-  - [x] .appintoss.yml 선택적 설정
-- [x] 3.3. 타입별 참조 루트 설계 ✅
-  - [x] WebView 참조 경로
-  - [x] React Native 참조 경로
-  - [x] PROJECT_TYPE_SYSTEM.md 생성
+4. **접근 권한**
+   - docs/, example/: 읽기 전용
+   - project/*: 읽기/쓰기
 
-### Phase 4: 디렉토리 구조 재설계 (우선순위: 🟡 높음)
-- [x] 4.1. 현재 구조 분석 ✅
-  ```
-  docs/
-  ├── reference/
-  │   ├── bedrock/ (모든 타입 공통)
-  │   └── tds-mobile/ (WebView 전용) ← 잘못 분류됨
-  ```
-- [x] 4.2. 타입별 구분 방법 결정 ✅
-  ```
-  선택: claude.md로 논리적 구분 (원본 보존)
+5. **계층적 참조 원칙**
+   - 상향 참조: 하위는 상위 먼저 읽기
+   - 계층 명시: 각 claude.md는 상위 경로 명시
 
-  ❌ 물리적 디렉토리 이동 (원본 오염)
-  ✅ claude.md 파일로 타입 명시
-  ✅ 원본 디렉토리 구조 유지
-  ```
-- [x] 4.3. 원본 보존 원칙 확립 ✅
-  - docs/ = 공식 문서 원본 (수정 금지)
-  - example/ = 공식 예제 원본 (수정 금지)
-  - claude.md 파일만 추가/수정
-- [x] 4.4. 구조 확정 ✅
-  ```
-  docs/reference/
-  ├── bedrock/ (원본 유지)
-  ├── tds-mobile/ (원본 유지)
-  │   └── claude.md (새로 생성 - WebView 전용 명시)
-  └── claude.md (수정 - 타입별 구분 명확화)
-  ```
+### Phase 2: 루트 CLAUDE.md 개선 (우선순위: 🔴 최고)
+- [ ] 2.1. "필수 지시사항" 섹션에 UX Writing 규칙 추가
+- [ ] 2.2. 하위 문서 작성 시 참조해야 할 표준 규칙 섹션 추가
+- [ ] 2.3. TASK.md 사용 규칙 섹션 추가 (임시 작업용)
+- [ ] 2.4. 변경사항 커밋
 
-### Phase 5: 계층구조 파일 재작성 (우선순위: 🟡 높음)
-- [x] 5.1. 루트 CLAUDE.md 수정 ✅
-  - [x] 프로젝트 타입 구분 추가 (Type 1/2/3 상세 설명)
-  - [x] TASK.md 사용 규칙 추가 (이미 완료)
-  - [x] 올바른 기술 스택 매핑 (WebView=TDS Mobile, RN=TDS RN)
-  - [x] 디렉토리 구조에 타입 명시
-  - [x] 개발 워크플로우 타입별 수정
-  - [x] 주의사항 타입 혼용 금지 추가
-- [x] 5.2. QUICK_REFERENCE.md 수정 ✅
-  - [x] 프로젝트 타입별 올바른 참조
-  - [x] WebView → TDS Mobile (로컬 문서 사용)
-  - [x] React Native → TDS React Native (온라인 문서 참조)
-  - [x] 타입별 UI 라이브러리 경고 추가
-  - [x] 각 섹션에 사용 가능한 문서 명시
-- [x] 5.3. docs/reference/claude.md 수정 ✅
-  - [x] TDS Mobile 설명 수정 (WebView 전용 명시)
-  - [x] TDS React Native 섹션 추가 (온라인 참조)
-  - [x] 프로젝트 타입별 참조 경고 추가
-  - [x] 컴포넌트 찾기 섹션 타입별 구분
-  - [x] 자주 사용하는 컴포넌트 WebView/RN 구분
-- [x] 5.4. docs/reference/tds-mobile/claude.md 생성 ✅
-  - [x] WebView 전용 명시 (상단 경고)
-  - [x] React Native 사용 불가 경고 추가
-  - [x] 필수 의존성 명시 (react-dom 등)
-  - [x] 디렉토리 구조 안내 (67개 문서)
-  - [x] 빠른 참조 섹션 (자주 사용하는 컴포넌트)
-  - [x] 사용 패턴 및 프로젝트 설정 확인 방법
-  - [x] 연관 문서 링크
-- [x] 5.5. docs/04-development/claude.md 수정 ✅
-  - [x] 프로젝트 타입별 UI 라이브러리 섹션 추가
-  - [x] 연동하기 섹션: TDS 라이브러리 명시
-  - [x] 프로젝트 유형별 필수 문서: TDS 매핑 명확화
-  - [x] 주의사항: 타입별 TDS 확인 1순위로 추가
-  - [x] 연관 디렉토리: TDS Mobile 링크 추가
-- [x] 5.6. docs/03-design/claude.md 수정 ✅
-  - [x] 프로젝트 타입별 디자인 시스템 섹션 추가
-  - [x] TDS Mobile "WebView 전용" 표시
-  - [x] 읽기 순서: WebView vs React Native 분리
-  - [x] 핵심 포인트: 타입별 TDS 사용 경고
-  - [x] 연관 디렉토리: TDS Mobile/TDS RN 구분
+**추가 내용**:
+```markdown
+### UX Writing 규칙 (필수)
+모든 사용자 대면 텍스트는 Apps in Toss UX Writing 가이드를 준수해야 합니다.
 
-### Phase 6: 프로젝트 템플릿 생성 (우선순위: 🟢 보통)
-- [x] 6.1. WebView 프로젝트 CLAUDE.md 템플릿 ✅
-- [x] 6.2. React Native 프로젝트 CLAUDE.md 템플릿 ✅
-- [x] 6.3. Unity 프로젝트 CLAUDE.md 템플릿 ✅
-- [x] 6.4. 템플릿 사용 가이드 작성 ✅
+**필수 규칙**:
+1. **~해요체 사용**: 상황/맥락 불문 모든 문구에 "~해요" 적용
+2. **능동적 말하기**: 됐어요 → 했어요
+3. **긍정적 말하기**: 없어요 → 있어요
 
-### Phase 7: 검증 및 테스트 (우선순위: 🔴 최고)
-- [x] 7.1. 모든 claude.md 파일 교차 검증 ✅
-- [x] 7.2. 참조 링크 검증 ✅
-- [x] 7.3. 계층구조 일관성 검증 ✅
-- [x] 7.4. 공식 문서와 대조 검증 ✅
-
-### Phase 8: 문서화 및 커밋 (우선순위: 🔴 최고)
-- [x] 8.1. REFERENCE_GUIDE.md 업데이트 ✅
-- [x] 8.2. 변경 로그 작성 ✅
-- [x] 8.3. Git 커밋 및 푸시 ✅
-- [x] 8.4. TASK.md 완료 표시 ✅
-
----
-
-## 💡 개선 제안
-
-### 제안 1: 프로젝트 타입 선언 파일
-```yaml
-# project/.appintoss.yml
-type: webview | react-native | unity
-framework:
-  webview: @apps-in-toss/web-framework
-  react-native: @granite-js/react-native
-  unity: unity
-ui:
-  webview: @toss/tds-mobile
-  react-native: @toss/tds-react-native
+**참조**: [docs/03-design/03-ux-writing.md](docs/03-design/03-ux-writing.md)
 ```
 
-### 제안 2: 타입별 참조 루트
-```
-루트 CLAUDE.md
-├─ [WebView 프로젝트] → docs/webview-guide.md
-│  └─ TDS Mobile 참조
-└─ [React Native 프로젝트] → docs/react-native-guide.md
-   └─ TDS React Native 참조
+### Phase 3: docs/claude.md 계층 개선 (우선순위: 🟡 높음)
+- [ ] 3.1. docs/claude.md: UX Writing 규칙 참조 추가
+- [ ] 3.2. docs/claude.md: 표준 규칙 체크리스트 추가
+- [ ] 3.3. docs/01-intro/claude.md: 규칙 참조 추가
+- [ ] 3.4. docs/02-prepare/claude.md: 규칙 참조 추가
+- [ ] 3.5. docs/03-design/claude.md: UX Writing 강조
+- [ ] 3.6. docs/04-development/claude.md: 타입별 규칙 강조
+- [ ] 3.7. 기타 docs/*/claude.md 파일 개선
+
+**추가 형식**:
+```markdown
+## ⚠️ 필수 규칙 (상위 문서 참조)
+
+하위 프로젝트 개발 시 **반드시 준수**해야 하는 규칙입니다.
+
+### 1. UX Writing (🔴 필수)
+- ~해요체 사용 (상황 불문)
+- 능동적/긍정적 말하기
+- 참조: [03-design/03-ux-writing.md](03-design/03-ux-writing.md)
+
+### 2. 프로젝트 타입 구분 (🔴 필수)
+- WebView ↔ React Native 혼용 금지
+- 참조: [../../CLAUDE.md - 타입 구분](../../CLAUDE.md)
+
+### 3. 언어 규칙
+- 문서: 한글 / 코드: 영어
 ```
 
-### 제안 3: 자동 검증 스크립트
-- 프로젝트 타입과 의존성 매칭 검증
-- 잘못된 TDS 패키지 사용 감지
+### Phase 4: example/claude.md 개선 (우선순위: 🟡 높음)
+- [ ] 4.1. example/claude.md 읽기
+- [ ] 4.2. 표준 규칙 참조 섹션 추가
+- [ ] 4.3. 예제 코드 내 텍스트도 ~해요체 확인 안내 추가
+
+### Phase 5: 프로젝트 템플릿 개선 (우선순위: 🟢 보통)
+- [ ] 5.1. templates/webview-project-CLAUDE.md.template 검토
+- [ ] 5.2. templates/react-native-project-CLAUDE.md.template 검토
+- [ ] 5.3. templates/unity-project-CLAUDE.md.template 검토
+- [ ] 5.4. 템플릿에 UX Writing 규칙 명시 여부 확인 및 개선
+
+**참고**: ROULETTE 프로젝트는 이미 UX Writing 규칙이 잘 명시되어 있으므로 이를 템플릿에 반영
+
+### Phase 6: 교차 검증 (우선순위: 🔴 최고)
+- [ ] 6.1. 모든 claude.md 파일 규칙 일관성 확인
+  - [ ] 루트 CLAUDE.md
+  - [ ] docs/claude.md
+  - [ ] docs/*/claude.md (15개)
+  - [ ] example/claude.md
+  - [ ] templates/*.template (3개)
+- [ ] 6.2. 규칙 참조 링크 검증
+- [ ] 6.3. 상향 참조 경로 확인
+- [ ] 6.4. 누락된 규칙 최종 확인
+
+### Phase 7: 문서화 및 커밋 (우선순위: 🔴 최고)
+- [ ] 7.1. STANDARD_RULES.md 최종 작성
+- [ ] 7.2. CHANGELOG 작성 (변경 로그)
+- [ ] 7.3. Git 커밋 및 푸시
+- [ ] 7.4. TASK.md 완료 표시
 
 ---
 
 ## 📊 진행 상황
 
-- **Phase 1**: ✅ 3/3 (100%)
-- **Phase 2**: ✅ 3/3 (100%)
-- **Phase 3**: ✅ 3/3 (100%)
-- **Phase 4**: ✅ 4/4 (100%)
-- **Phase 5**: ✅ 6/6 (100%)
-- **Phase 6**: ✅ 4/4 (100%)
-- **Phase 7**: ✅ 4/4 (100%)
-- **Phase 8**: ✅ 4/4 (100%) 🎉
+- **Phase 1**: ⬜ 0/4 (0%)
+- **Phase 2**: ⬜ 0/4 (0%)
+- **Phase 3**: ⬜ 0/7 (0%)
+- **Phase 4**: ⬜ 0/3 (0%)
+- **Phase 5**: ⬜ 0/4 (0%)
+- **Phase 6**: ⬜ 0/4 (0%)
+- **Phase 7**: ⬜ 0/4 (0%)
 
-**전체 진행률**: 31/31 (100%) 🎉🎉🎉
+**전체 진행률**: 0/30 (0%)
 
 ---
 
 ## 📝 작업 로그
 
-### 2025-10-28
+### 2025-10-30
 
-**16:45 - 작업 시작**
+**18:30 - 작업 시작**
 - TASK.md 생성
-- 문제 분석 및 작업 계획 수립 (8개 Phase, 31개 체크리스트)
-
-**16:48 - Phase 1 완료**
-- ✅ 1.1: git revert efcd89d 성공 (5개 파일 복구, 390줄 제거)
-- ✅ 1.2: CLAUDE.md에 TASK.md 사용 규칙 추가
-- ✅ 1.3: 복구 완료 확인
-
-**16:55 - Phase 2 완료**
-- ✅ 2.1: 공식 문서 구조 분석 (WebView, React Native, TDS 문서 모두 확인)
-- ✅ 2.2: 수집된 문서 검증 (67개 TDS Mobile 파일 확인)
-- ✅ 2.3: TECH_STACK_MAPPING.md 생성 (정확한 기술 스택 매핑 문서화)
-
-**17:00 - Phase 3 완료**
-- ✅ 3.1: 프로젝트 타입 정의 (WebView, React Native, Unity)
-- ✅ 3.2: 타입 명시 방법 설계 (CLAUDE.md 선언 + package.json 자동 감지)
-- ✅ 3.3: 타입별 참조 루트 설계
-- ✅ PROJECT_TYPE_SYSTEM.md 생성 (상세한 타입 구분 시스템 문서화)
-
-**17:10 - Phase 4 완료**
-- ✅ 4.1: 현재 구조 분석 (docs/reference/ 구조 파악)
-- ✅ 4.2: 타입별 구분 방법 결정 (claude.md 논리적 구분 선택)
-- ✅ 4.3: 원본 보존 원칙 확립 (docs/example 수정 금지, claude.md만 작업)
-- ✅ 4.4: 구조 확정 (원본 디렉토리 유지, claude.md로 타입 명시)
-- **중요 결정**: 물리적 디렉토리 이동 대신 claude.md 파일로 논리적 구분
-
-**17:15 - Phase 5.1 완료**
-- ✅ 5.1: 루트 CLAUDE.md 수정 완료
-- **추가 내용**:
-  - "프로젝트 타입 구분 시스템" 섹션 신규 추가
-  - Type 1 (WebView + TDS Mobile) 상세 설명
-  - Type 2 (React Native + TDS React Native) 상세 설명
-  - Type 3 (Unity) 상세 설명
-  - 타입별 혼용 금지 경고 추가
-  - 프로젝트 타입 선언 방법 가이드 추가
-- **수정 내용**:
-  - 디렉토리 구조: "TDS Mobile (WebView 전용)" 명시
-  - docs/ 섹션: 타입별 참조 방법 추가
-  - 개발 워크플로우: TDS 컴포넌트 사용 시 타입별 차이 명시
-  - 주의사항: 타입별 UI 라이브러리 혼용 금지 1순위로 추가
-
-**17:20 - Phase 5.2 완료**
-- ✅ 5.2: QUICK_REFERENCE.md 수정 완료
-- **발견된 오류 수정**:
-  - React Native 섹션이 TDS Mobile을 잘못 참조하고 있었음
-  - React Native → TDS React Native로 수정
-  - 온라인 문서 참조로 변경 (로컬 문서 없음)
-- **추가 내용**:
-  - 문서 상단에 "프로젝트 타입별 UI 라이브러리" 경고 추가
-  - WebView/React Native/Unity 각각 사용 가능한 UI 라이브러리 명시
-- **수정 내용**:
-  - React Native: TDS React Native 온라인 문서 참조
-  - WebView: TDS Mobile 로컬 문서 67개 사용 가능
-  - 각 섹션에 UI 라이브러리 명시 추가
-
-**17:25 - Phase 5.3 완료**
-- ✅ 5.3: docs/reference/claude.md 수정 완료
-- **추가 내용**:
-  - 문서 상단에 "프로젝트 타입별 참조" 경고 섹션
-  - TDS React Native 섹션 신규 추가 (온라인 참조)
-- **수정 내용**:
-  - TDS Mobile: "WebView 전용" 명확히 표시
-  - 필수 의존성 명시 (react-dom 등)
-  - 컴포넌트 찾기: 타입별로 구분 (로컬/온라인)
-  - 자주 사용하는 컴포넌트: WebView/React Native 분리
-
-**17:30 - Phase 5.4 완료**
-- ✅ 5.4: docs/reference/tds-mobile/claude.md 생성 완료
-- **신규 파일 생성** (기존에 없었음):
-  - TDS Mobile 디렉토리 전용 가이드 파일
-  - WebView 앱 전용 명시 (상단 경고)
-  - React Native 사용 불가 경고
-- **주요 내용**:
-  - 필수 의존성: react, react-dom, @emotion/react
-  - 디렉토리 구조: 67개 문서 (components 58, hooks 4, foundations 2, 기타 3)
-  - 빠른 참조: 입력/폼, 레이아웃, 피드백, 네비게이션별 분류
-  - 사용 패턴: 임포트 방법 및 프로젝트 설정 확인
-  - 연관 문서: WebView 개발 가이드, 디자인 가이드, 예제 코드
-
-**17:35 - Phase 5.5 완료**
-- ✅ 5.5: docs/04-development/claude.md 수정 완료
-- **추가 내용**:
-  - 문서 상단에 "프로젝트 타입별 UI 라이브러리" 섹션
-  - WebView/React Native/Unity 각 타입별 TDS 명시
-- **수정 내용**:
-  - 연동하기 섹션: React Native (TDS RN), WebView (TDS Mobile), Unity (Unity UI)
-  - 프로젝트 유형별 필수 문서: TDS 라이브러리 명확히 표시
-    * React Native: TDS React Native (온라인)
-    * WebView: TDS Mobile (로컬 67개)
-    * Unity: Unity UI
-  - 주의사항: 타입별 TDS 확인을 1순위로 추가
-  - 연관 디렉토리: TDS Mobile 로컬 문서 링크 추가
-
-**17:40 - Phase 5.6 완료 - Phase 5 전체 완료! 🎉**
-- ✅ 5.6: docs/03-design/claude.md 수정 완료
-- **추가 내용**:
-  - 문서 상단에 "프로젝트 타입별 디자인 시스템" 섹션
-  - WebView (TDS Mobile) vs React Native (TDS RN) vs Unity 구분
-- **수정 내용**:
-  - TDS Mobile: "WebView 전용" 표시
-  - 읽기 순서: WebView/React Native 앱 디자인으로 분리
-  - 핵심 포인트: "타입별 TDS 사용" + "절대 혼용 금지" 경고
-  - 연관 디렉토리: TDS Mobile (로컬 67개) vs TDS RN (온라인) 구분
-- **Phase 5 전체 완료**: 계층구조 파일 재작성 6/6 (100%)
-  * 루트 CLAUDE.md, QUICK_REFERENCE.md 수정
-  * docs/reference/claude.md 수정
-  * docs/reference/tds-mobile/claude.md 신규 생성
-  * docs/04-development/claude.md 수정
-  * docs/03-design/claude.md 수정
-
-**17:50 - Phase 6 완료 - 프로젝트 템플릿 생성! 🎉**
-- ✅ 6.1: WebView 프로젝트 템플릿 생성 (templates/webview-project-CLAUDE.md.template)
-- ✅ 6.2: React Native 프로젝트 템플릿 생성 (templates/react-native-project-CLAUDE.md.template)
-- ✅ 6.3: Unity 프로젝트 템플릿 생성 (templates/unity-project-CLAUDE.md.template)
-- ✅ 6.4: 템플릿 사용 가이드 작성 (templates/TEMPLATE_GUIDE.md)
-- **주요 내용**:
-  - 타입별 템플릿 3개 (WebView, React Native, Unity)
-  - 각 템플릿에 타입 선언 및 사용 가능/불가능 기술 명시
-  - 7단계 사용 방법 및 프로젝트 생성 체크리스트
-  - 타입별 비교표 및 FAQ
-- **커밋**: d9021d0 "docs: Phase 6 완료 - 프로젝트 템플릿 생성 🎉"
-
-**18:00 - Phase 7 완료 - 검증 및 테스트! 🎉**
-- ✅ 7.1: 모든 claude.md 파일 크로스 검증 (17개 파일)
-- ✅ 7.2: 참조 링크 검증 (109개 링크, 10개 깨진 링크 수정)
-- ✅ 7.3: 계층구조 일관성 검증 (3단계 계층 구조 확인)
-- ✅ 7.4: 공식 문서 대조 검증 (TDS Mobile, TDS RN, Bedrock SDK)
-- **수정 내용**:
-  - docs/reference/tds-mobile/claude.md: 존재하지 않는 컴포넌트 링크 제거
-  - 실제 존재하는 컴포넌트로 교체 (grid-list, border, numeric-spinner 등)
-  - 공식 문서 참조 링크 추가
-- **최종 결과**: ✅ 0개 깨진 링크, 모든 파일 일관성 확보
-- **커밋**: cd68931 "docs: Phase 7 완료 - 검증 및 테스트 🎉"
-
-**18:10 - Phase 8 완료 - 최종 문서화 및 커밋! 🎉🎉🎉**
-- ✅ 8.1: REFERENCE_GUIDE.md 업데이트 (프로젝트 타입 구분 시스템 추가)
-- ✅ 8.2: CHANGELOG.md 생성 (전체 리팩토링 작업 기록)
-- ✅ 8.3: Git 커밋 (e65619a "docs: Phase 8 완료 - 최종 문서화 및 변경 로그 🎉")
-- ✅ 8.4: TASK.md 완료 표시 (현재 작업)
-- **주요 내용**:
-  - REFERENCE_GUIDE.md: 3가지 타입 상세 설명, 혼용 금지 규칙
-  - CHANGELOG.md: Phase 1-8 전체 변경 로그, 마이그레이션 가이드
-  - 영향 파일: 신규 6개, 수정 18개
-- **전체 프로젝트 완료**: 31/31 (100%) 🎉🎉🎉
+- 문제 분석: UX Writing 규칙(~해요체 등)이 하위 문서에 명시되지 않음
+- 작업 계획 수립: 7개 Phase, 30개 체크리스트
 
 ---
 
-## 🎉 프로젝트 완료
+## 💡 표준 규칙 요약 (Phase 1 완료 후 업데이트 예정)
 
-**작업 기간**: 2025-10-28 (단일 세션)
-**총 작업 시간**: 약 1시간 30분
-**완료된 Phase**: 8개 (전체)
-**완료된 체크리스트**: 31개 (전체)
-**영향받은 파일**: 24개 (신규 6개, 수정 18개)
+### 1. UX Writing 규칙 (🔴 필수)
+**출처**: [docs/03-design/03-ux-writing.md](docs/03-design/03-ux-writing.md)
 
-### 주요 성과
-1. ✅ **TDS Mobile 분류 오류 수정** (React Native → WebView)
-2. ✅ **프로젝트 타입 구분 시스템 구축** (3가지 타입)
-3. ✅ **계층적 문서 참조 시스템 완성** (17개 claude.md 파일)
-4. ✅ **표준 템플릿 제공** (타입별 3개 + 가이드)
-5. ✅ **전체 문서 검증** (링크 109개, 일관성 100%)
-6. ✅ **종합 문서화** (REFERENCE_GUIDE.md, CHANGELOG.md)
+1. **~해요체 사용**
+   - 상황/맥락 불문 모든 문구에 적용
+   - ❌ ~습니다, ~했습니다 → ✅ ~해요, ~했어요
+   - ❌ 검색 중..., 로딩 중... → ✅ 검색하고 있어요, 불러오고 있어요
 
-### 참조 문서
-- [CLAUDE.md](CLAUDE.md) - 프로젝트 전체 개요 및 타입 시스템
-- [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - 빠른 참조 가이드
-- [REFERENCE_GUIDE.md](REFERENCE_GUIDE.md) - 참조 규칙 및 타입별 가이드
-- [CHANGELOG.md](CHANGELOG.md) - 전체 변경 로그
-- [templates/TEMPLATE_GUIDE.md](templates/TEMPLATE_GUIDE.md) - 템플릿 사용 가이드
+2. **능동적 말하기**
+   - ❌ 됐어요 → ✅ 했어요
+   - ❌ 완료됐어요 → ✅ 완료했어요
+
+3. **긍정적 말하기**
+   - ❌ 검색 결과가 없어요 → ✅ 주변에 음식점을 찾지 못했어요 (+ 대안 제시)
+
+**적용 범위**:
+- UI 컴포넌트의 모든 텍스트
+- 에러 메시지 및 안내 문구
+- 로딩 상태 텍스트
+- JSDoc 주석의 예제 코드 내 텍스트
+
+### 2. 프로젝트 타입 구분 (🔴 필수)
+- **Type 1 - WebView**: TDS Mobile (`@toss/tds-mobile`)
+- **Type 2 - React Native**: TDS React Native (`@toss/tds-react-native`)
+- **Type 3 - Unity**: Unity UI
+- ❌ **절대 혼용 금지**: WebView ↔ React Native 간 UI 라이브러리 교차 사용 불가
+
+### 3. 언어 규칙
+- **문서/커뮤니케이션**: 한글
+- **코드/파일명/변수명**: 영어
+- **Claude 사고 과정**: 한글
+
+### 4. 접근 권한
+- **docs/, example/**: 읽기 전용 (하위 프로젝트 수정 금지)
+- **project/***: 읽기/쓰기 (각 프로젝트 독립 개발)
+
+### 5. 계층적 참조 원칙
+- **상향 참조**: 하위 디렉토리는 상위 claude.md 먼저 읽기
+- **계층 명시**: 각 claude.md는 상위 컨텍스트 경로 명시
 
 ---
 
-**마지막 업데이트**: 2025-10-28 18:10
+## ⚙️ TASK.md 사용 규칙 (임시 - 작업 완료 후 제거 예정)
+
+**작업 기간**: 2025-10-30 ~ 완료 시까지
+
+**필수 규칙**:
+1. **모든 작업은 TASK.md를 통해 추적**
+   - Phase별 체크리스트 확인
+   - 작업 전 해당 항목 확인
+   - 작업 완료 후 체크 표시
+
+2. **작업 로그 기록**
+   - 주요 작업 완료 시 TASK.md 하단에 로그 기록
+   - 문제 발생 시 즉시 기록
+   - 의사결정 사항 문서화
+
+3. **진행 상황 업데이트**
+   - 각 Phase 완료 시 진행률 업데이트
+   - 전체 진행률 계산 및 표시
+
+**삭제 시점**:
+- 사용자가 작업 완료 확인 후 명시적으로 삭제 지시할 때까지 유지
+
+**현재 작업**: 표준 규칙 참조 시스템 개선
+**목표**: 모든 하위 claude.md 파일에서 주요 규칙들이 일관되게 참조되도록 개선
+
+---
+
+**마지막 업데이트**: 2025-10-30 18:30
 **담당자**: Claude Code
-**상태**: ✅ 완료 (Complete)
+**상태**: 🚀 작업 시작 (Phase 1 대기)
