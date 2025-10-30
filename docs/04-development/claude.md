@@ -75,6 +75,59 @@ Apps in Toss 앱 **개발 환경 구축 및 연동** 가이드입니다.
 ```
 **UI 시스템**: Unity UI (제한적 TDS 지원)
 
+---
+
+## 🚨 타입별 필수 준수 사항
+
+**프로젝트 타입에 따라 사용할 수 있는 UI 라이브러리가 엄격히 구분됩니다.**
+
+### WebView 프로젝트 (🔴 필수)
+
+**사용 가능**:
+- ✅ TDS Mobile (`@toss/tds-mobile`)
+- ✅ `react-dom`
+- ✅ Emotion (`@emotion/react`)
+
+**절대 금지**:
+- ❌ TDS React Native (`@toss/tds-react-native`)
+- ❌ `react-native` 관련 패키지
+
+**참조**:
+- [06-webview.md](06-webview.md)
+- [TDS Mobile 문서](../reference/tds-mobile/)
+
+### React Native 프로젝트 (🔴 필수)
+
+**사용 가능**:
+- ✅ TDS React Native (`@toss/tds-react-native`)
+- ✅ `react-native`
+- ✅ Granite (`@granite-js/react-native`)
+
+**절대 금지**:
+- ❌ TDS Mobile (`@toss/tds-mobile`)
+- ❌ `react-dom`
+
+**참조**:
+- [03-react-native.md](03-react-native.md)
+- [TDS RN 공식](https://tossmini-docs.toss.im/tds-react-native/)
+
+### Unity 프로젝트
+
+**사용 가능**:
+- ✅ Unity UI 시스템
+
+**참조**:
+- [07-unity.md](07-unity.md)
+
+**⚠️ 혼용 시 발생하는 문제**:
+- 런타임 오류 발생
+- 빌드 실패
+- API 호환성 문제
+
+**상세**: [프로젝트 타입 구분 시스템](../../CLAUDE.md#프로젝트-타입-구분-시스템)
+
+---
+
 ## ⚠️ 주의사항
 
 1. **프로젝트 타입 확인**: WebView vs React Native에 따라 TDS 라이브러리 다름!

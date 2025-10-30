@@ -35,6 +35,62 @@ Analytics.logEvent('button_click', {
 });
 ```
 
+---
+
+## ⚠️ 필수 규칙 (상위 문서 참조)
+
+분석 및 로깅 구현 시 반드시 준수해야 할 규칙입니다.
+
+### 1. 언어 규칙 - 로깅 데이터 (🔴 필수)
+
+**이벤트 로깅**:
+- ✅ **이벤트 이름**: 영어 (snake_case)
+  - 예: `button_click`, `screen_view`, `purchase_complete`
+- ✅ **파라미터 이름**: 영어 (snake_case)
+  - 예: `button_name`, `screen`, `product_id`
+- ✅ **파라미터 값 (문자열)**: 영어
+  - 예: `'start_game'`, `'home'`, `'premium_item'`
+
+**올바른 예시**:
+```javascript
+// ✅ 올바름
+Analytics.logEvent('button_click', {
+  button_name: 'start_game',
+  screen: 'home',
+  user_action: 'tap'
+});
+```
+
+**잘못된 예시**:
+```javascript
+// ❌ 잘못됨 - 한글 사용
+Analytics.logEvent('버튼_클릭', {
+  버튼_이름: '게임_시작',
+  화면: '홈'
+});
+```
+
+**이유**: 데이터 분석 플랫폼의 국제 표준 및 호환성 유지
+
+### 2. UX Writing - 앱 UI (🔴 필수)
+
+분석 이벤트 로깅과 별개로, **앱의 UI 텍스트**는 반드시 ~해요체를 사용해야 합니다.
+
+- 앱 화면의 버튼, 안내 문구: ~해요체
+- 분석 이벤트 데이터: 영어
+
+**참조**: [../03-design/03-ux-writing.md](../03-design/03-ux-writing.md)
+
+### 3. 프로젝트 타입 구분 (🔴 필수)
+
+Analytics API는 모든 프로젝트 타입에서 동일하게 사용 가능하지만, UI 라이브러리는 타입별로 다릅니다.
+
+**참조**: [../../CLAUDE.md - 타입 구분](../../CLAUDE.md#프로젝트-타입-구분-시스템)
+
+**상세 규칙**: [../../STANDARD_RULES.md](../../STANDARD_RULES.md)
+
+---
+
 ## 🔗 연관 디렉토리
 
 - **개발 참조**: [04-development](../04-development/claude.md)

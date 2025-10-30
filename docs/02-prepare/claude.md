@@ -20,6 +20,29 @@ Apps in Toss **콘솔에서 앱을 등록**하는 방법입니다.
 3. **디자인 시작** → [03-design](../03-design/claude.md)
 4. **개발 시작** → [04-development](../04-development/claude.md)
 
+---
+
+## ⚠️ 필수 규칙 (상위 문서 참조)
+
+콘솔 등록 전 반드시 숙지해야 할 규칙입니다.
+
+### 1. UX Writing (🔴 필수)
+- ~해요체 사용 (상황 불문)
+- 능동적/긍정적 말하기
+- **참조**: [../03-design/03-ux-writing.md](../03-design/03-ux-writing.md)
+
+### 2. 프로젝트 타입 구분 (🔴 필수)
+- WebView ↔ React Native 혼용 금지
+- 콘솔 등록 시 타입 결정 필요
+- **참조**: [../../CLAUDE.md - 타입 구분](../../CLAUDE.md#프로젝트-타입-구분-시스템)
+
+### 3. 언어 규칙
+- 문서: 한글 / 코드: 영어
+
+**상세 규칙**: [../../STANDARD_RULES.md](../../STANDARD_RULES.md)
+
+---
+
 ## ⚠️ 주의사항
 
 - ✅ 서비스 오픈 정책 숙지 필수 (금지 서비스 확인)
