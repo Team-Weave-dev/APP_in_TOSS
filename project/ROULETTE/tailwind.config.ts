@@ -1,0 +1,58 @@
+import type { Config } from 'tailwindcss';
+
+const config: Config = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        // Toss brand colors
+        primary: {
+          DEFAULT: '#3182F6',
+          50: '#EBF4FF',
+          100: '#D6E9FF',
+          200: '#B3D9FF',
+          300: '#8AC4FF',
+          400: '#61AFFF',
+          500: '#3182F6',
+          600: '#1968DB',
+          700: '#0F52BA',
+          800: '#0A3D8F',
+          900: '#062864',
+        },
+        gray: {
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827',
+        },
+      },
+      fontFamily: {
+        sans: [
+          'Pretendard',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'system-ui',
+          'Roboto',
+          'sans-serif',
+        ],
+      },
+      animation: {
+        'spin-slow': 'spin 3s linear',
+        'bounce-slow': 'bounce 2s infinite',
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;
