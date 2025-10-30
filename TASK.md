@@ -112,11 +112,11 @@
 - [x] 4.2. 표준 규칙 참조 섹션 추가
 - [x] 4.3. 예제 코드 내 텍스트도 ~해요체 확인 안내 추가
 
-### Phase 5: 프로젝트 템플릿 개선 (우선순위: 🟢 보통)
-- [ ] 5.1. templates/webview-project-CLAUDE.md.template 검토
-- [ ] 5.2. templates/react-native-project-CLAUDE.md.template 검토
-- [ ] 5.3. templates/unity-project-CLAUDE.md.template 검토
-- [ ] 5.4. 템플릿에 UX Writing 규칙 명시 여부 확인 및 개선
+### Phase 5: 프로젝트 템플릿 개선 (우선순위: 🟢 보통) ✅
+- [x] 5.1. templates/webview-project-CLAUDE.md.template 검토
+- [x] 5.2. templates/react-native-project-CLAUDE.md.template 검토
+- [x] 5.3. templates/unity-project-CLAUDE.md.template 검토
+- [x] 5.4. 템플릿에 UX Writing 규칙 명시 여부 확인 및 개선
 
 **참고**: ROULETTE 프로젝트는 이미 UX Writing 규칙이 잘 명시되어 있으므로 이를 템플릿에 반영
 
@@ -145,11 +145,11 @@
 - **Phase 2**: ✅ 4/4 (100%)
 - **Phase 3**: ✅ 7/7 (100%)
 - **Phase 4**: ✅ 3/3 (100%)
-- **Phase 5**: ⬜ 0/4 (0%)
+- **Phase 5**: ✅ 4/4 (100%)
 - **Phase 6**: ⬜ 0/4 (0%)
 - **Phase 7**: ⬜ 0/4 (0%)
 
-**전체 진행률**: 18/30 (60%)
+**전체 진행률**: 22/30 (73%)
 
 ---
 
@@ -204,6 +204,22 @@
 - example/.gitignore에 claude.md 추가 (서브모듈 내 충돌 방지)
 
 **다음 작업**: Phase 5 - 프로젝트 템플릿 개선 (4개 하위 작업)
+
+**21:00 - Phase 5 완료** ✅
+- 3개 프로젝트 템플릿에 UX Writing Guidelines 섹션 추가 완료
+- 템플릿별 총 24-26줄 추가
+- ROULETTE/CLAUDE.md의 상세한 UX Writing 규칙을 템플릿에 반영:
+  - ✅ **~해요체 사용**: 상황/맥락 불문 모든 문구 적용
+  - ✅ **능동적 말하기**: 됐어요 → 했어요
+  - ✅ **긍정적 말하기**: 부정형 최소화 + 대안 제시
+  - ✅ **캐주얼한 경어**: 과도한 존댓말 지양
+- 템플릿별 특화:
+  - **WebView**: TDS Mobile 컴포넌트 텍스트 적용
+  - **React Native**: TDS React Native 컴포넌트 텍스트 적용
+  - **Unity**: Unity UI (TextMeshPro 등), 게임 내 다이얼로그 적용
+- 참조 문서 링크 추가 (STANDARD_RULES.md, ux-writing.md)
+
+**다음 작업**: Phase 6 - 교차 검증 (4개 하위 작업)
 
 ---
 
