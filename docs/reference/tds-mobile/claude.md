@@ -107,6 +107,115 @@ Apps in Toss **WebView 앱** 전용 UI 컴포넌트 라이브러리 문서입니
 
 ---
 
+## ⚠️ 필수 규칙 (상위 문서 참조)
+
+TDS Mobile 사용 시 반드시 준수해야 할 규칙입니다.
+
+### 1. UX Writing - 컴포넌트 텍스트 (🔴 필수)
+
+**모든 TDS Mobile 컴포넌트의 텍스트는 ~해요체를 사용해야 합니다.**
+
+**적용 대상**:
+- ✅ Button label
+- ✅ Dialog title/content
+- ✅ TextField placeholder/helperText
+- ✅ Toast message
+- ✅ BottomSheet content
+- ✅ Tooltip, Badge, Label 등 모든 텍스트
+
+**올바른 예시**:
+```typescript
+// ✅ 올바름
+import { Button, Dialog, TextField, useToast } from '@toss/tds-mobile';
+
+<Button>저장할까요?</Button>
+
+<Dialog title="정말 삭제할까요?">
+  삭제된 데이터는 복구할 수 없어요
+</Dialog>
+
+<TextField
+  placeholder="이름을 입력해주세요"
+  helperText="2자 이상 입력해주세요"
+/>
+
+const toast = useToast();
+toast('저장했어요!');
+```
+
+**잘못된 예시**:
+```typescript
+// ❌ 잘못됨
+<Button>저장하시겠습니까?</Button>
+
+<Dialog title="정말 삭제하시겠습니까?">
+  삭제된 데이터는 복구할 수 없습니다
+</Dialog>
+
+<TextField
+  placeholder="이름을 입력하십시오"
+  helperText="2자 이상 입력하세요"
+/>
+
+toast('저장 완료');
+```
+
+**참조**: [../../03-design/03-ux-writing.md](../../03-design/03-ux-writing.md)
+
+### 2. WebView 전용 (🔴 필수)
+
+**TDS Mobile은 WebView 앱에서만 사용 가능합니다!**
+
+**올바른 프로젝트 구성**:
+```json
+// ✅ WebView 프로젝트 package.json
+{
+  "dependencies": {
+    "@toss/tds-mobile": "latest",
+    "@emotion/react": "^11",
+    "react": "^18",
+    "react-dom": "^18"
+  }
+}
+```
+
+**절대 금지**:
+```json
+// ❌ React Native 프로젝트에서 사용 금지
+{
+  "dependencies": {
+    "@toss/tds-mobile": "latest",  // ❌ 런타임 오류!
+    "react-native": "^0.72"
+  }
+}
+```
+
+**React Native 앱**은 반드시 **TDS React Native**를 사용해야 합니다:
+- 패키지: `@toss/tds-react-native`
+- 공식 문서: https://tossmini-docs.toss.im/tds-react-native/
+
+**참조**: [../../../CLAUDE.md - 타입 구분](../../../CLAUDE.md#프로젝트-타입-구분-시스템)
+
+### 3. 언어 규칙
+
+- **컴포넌트 텍스트**: 한글 (~해요체)
+- **props 이름**: 영어 (camelCase)
+- **코드/변수명**: 영어
+
+**올바른 예시**:
+```typescript
+// ✅ 올바름
+const submitButton = ( // 변수명: 영어
+  <Button onClick={handleSubmit}> // props: 영어
+    제출할까요? // 텍스트: 한글 (~해요체)
+  </Button>
+);
+```
+
+**상세 규칙**: [../../../STANDARD_RULES.md](../../../STANDARD_RULES.md)
+
+---
+
 ## 🎯 사용 패턴
 
 ### 컴포넌트 임포트

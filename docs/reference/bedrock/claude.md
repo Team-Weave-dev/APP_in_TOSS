@@ -125,6 +125,89 @@ Analytics.logEvent('button_click', {
 });
 ```
 
+---
+
+## ⚠️ 필수 규칙 (상위 문서 참조)
+
+Bedrock SDK 사용 시 반드시 준수해야 할 규칙입니다.
+
+### 1. UX Writing - API 파라미터 텍스트 (🔴 필수)
+
+Bedrock API 호출 시 사용자에게 표시되는 모든 텍스트는 ~해요체를 사용해야 합니다.
+
+**적용 대상**:
+- ✅ Toast, Alert, Dialog의 메시지 파라미터
+- ✅ Share API의 공유 텍스트
+- ✅ Push 알림 메시지
+
+**올바른 예시**:
+```typescript
+// ✅ 올바름
+import { share, Analytics } from '@apps-in-toss/bedrock';
+
+share({
+  title: '앱을 공유해요',
+  text: '친구에게 앱을 소개하고 포인트를 받아가세요'
+});
+
+Analytics.logEvent('share_complete', {
+  share_message: 'invite_friend'  // 로깅 데이터는 영어
+});
+```
+
+**잘못된 예시**:
+```typescript
+// ❌ 잘못됨
+share({
+  title: '앱을 공유합니다',
+  text: '친구에게 앱을 소개하고 포인트를 받아가십시오'
+});
+```
+
+**참조**: [../../03-design/03-ux-writing.md](../../03-design/03-ux-writing.md)
+
+### 2. 언어 규칙 - API vs UI (🔴 필수)
+
+**이벤트 로깅** (Analytics API):
+- ✅ **이벤트 이름**: 영어 (snake_case)
+  - 예: `button_click`, `screen_view`, `purchase_complete`
+- ✅ **파라미터 이름**: 영어 (snake_case)
+  - 예: `button_name`, `screen`, `product_id`
+- ✅ **파라미터 값**: 영어
+  - 예: `'start_game'`, `'home'`, `'premium_item'`
+
+**사용자 대면 텍스트** (share, toast 등):
+- ✅ **한글 (~해요체)** 사용
+
+**올바른 예시**:
+```typescript
+// ✅ 올바름
+Analytics.logEvent('button_click', {  // 로깅: 영어
+  button_name: 'share',
+  action: 'tap'
+});
+
+share({
+  text: '이 앱을 친구에게 공유해보세요'  // UI 텍스트: 한글 (~해요체)
+});
+```
+
+**참조**: [../../06-analytics/claude.md](../../06-analytics/claude.md)
+
+### 3. 프로젝트 타입 독립성
+
+**Bedrock SDK는 모든 프로젝트 타입에서 동일하게 사용 가능합니다** (WebView, React Native, Unity 공통).
+
+단, UI 라이브러리는 타입별로 분리됩니다:
+- WebView → TDS Mobile
+- React Native → TDS React Native
+
+**참조**: [../../../CLAUDE.md - 타입 구분](../../../CLAUDE.md#프로젝트-타입-구분-시스템)
+
+**상세 규칙**: [../../../STANDARD_RULES.md](../../../STANDARD_RULES.md)
+
+---
+
 ## 🔗 연관 디렉토리
 
 - **개발 가이드**: [04-development/03-react-native.md](../../04-development/03-react-native.md)
