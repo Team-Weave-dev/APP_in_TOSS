@@ -181,6 +181,29 @@ Apps in Toss 플랫폼은 **3가지 프로젝트 타입**을 지원하며, 각 �
 - **코드, 파일명, 변수명**: 영어로 유지
 - **Claude의 사고 과정**: 한글로 표현
 
+### UX Writing 규칙 (필수)
+
+모든 사용자 대면 텍스트는 Apps in Toss UX Writing 가이드를 준수해야 합니다.
+
+**필수 규칙**:
+1. **~해요체 사용**: 상황/맥락 불문 모든 문구에 "~해요" 적용
+   - ❌ ~습니다, ~했습니다, ~없습니다 → ✅ ~해요, ~했어요, ~없어요
+   - ❌ 검색 중..., 로딩 중... → ✅ 검색하고 있어요, 불러오고 있어요
+
+2. **능동적 말하기**: 능동형 문장 사용
+   - ❌ 됐어요, 완료됐어요 → ✅ 했어요, 완료했어요
+
+3. **긍정적 말하기**: 부정형 최소화, 대안 제시
+   - ❌ 검색 결과가 없어요 → ✅ 주변에 음식점을 찾지 못했어요 (+ 대안 제시)
+
+**참조**: [docs/03-design/03-ux-writing.md](docs/03-design/03-ux-writing.md)
+
+**적용 범위**:
+- UI 컴포넌트의 모든 텍스트
+- 에러 메시지 및 안내 문구
+- 로딩 상태 텍스트
+- JSDoc 주석의 예제 코드 내 텍스트
+
 ### 작업 추적
 - **TodoWrite**: 복잡한 작업의 단계별 진행 추적
 - **Serena MCP**: 세션 메모리 및 프로젝트 컨텍스트 (필요시)
@@ -209,6 +232,86 @@ Apps in Toss 플랫폼은 **3가지 프로젝트 타입**을 지원하며, 각 �
 **삭제 시점**:
 - 사용자가 작업 완료 확인 후 명시적으로 삭제 지시할 때까지 유지
 - 작업 완료 후에도 사용자 지시 전까지 보존
+
+---
+
+## 하위 CLAUDE.md 작성 가이드
+
+하위 디렉토리 또는 프로젝트에서 CLAUDE.md 파일을 작성할 때는 다음 필수 섹션을 포함해야 합니다.
+
+### 📋 필수 포함 섹션
+
+#### 1. 프로젝트 헤더 (필수)
+모든 하위 CLAUDE.md는 상단에 프로젝트 타입과 상위 문서 참조를 명시해야 합니다.
+
+```markdown
+# [프로젝트명] - Apps in Toss 프로젝트
+
+> **프로젝트 타입**: WebView | React Native | Unity
+> **UI 라이브러리**: TDS Mobile | TDS React Native | Unity UI
+> **프레임워크**: @apps-in-toss/web-framework | Granite | Unity
+> **상위 문서**: [../../CLAUDE.md](../../CLAUDE.md)
+```
+
+#### 2. UX Writing 규칙 (필수)
+모든 프로젝트는 UX Writing 규칙을 명시해야 합니다.
+
+```markdown
+## ⚠️ 중요 규칙
+
+### UX Writing Guidelines
+
+**모든 사용자 대면 텍스트는 Apps in Toss UX Writing 가이드를 준수해야 합니다.**
+
+**필수 규칙**:
+1. **~해요체 사용**: 모든 문구에 "~해요" 어미 사용 (상황/맥락 불문)
+2. **능동적 말하기**: 됐어요 → 했어요
+3. **긍정적 말하기**: 없어요 → 있어요 + 대안 제시
+
+**참조**: [../../docs/03-design/03-ux-writing.md](../../docs/03-design/03-ux-writing.md)
+
+**적용 범위**:
+- UI 컴포넌트의 모든 텍스트
+- 에러 메시지 및 안내 문구
+- 로딩 상태 텍스트
+- JSDoc 주석의 예제 코드 내 텍스트
+```
+
+#### 3. 프로젝트 타입 주의사항 (필수)
+프로젝트 타입별로 올바른 UI 라이브러리 사용을 명시합니다.
+
+```markdown
+### 프로젝트 타입 주의사항
+
+- ✅ **WebView 프로젝트**: TDS Mobile 사용
+  - 📚 참조: [../../docs/reference/tds-mobile/](../../docs/reference/tds-mobile/)
+- ❌ **React Native 라이브러리 금지**: @toss/tds-react-native 절대 사용 금지
+
+**중요**: WebView ↔ React Native 간 UI 라이브러리 혼용 시 런타임 오류 발생
+**상세**: [../../CLAUDE.md - 프로젝트 타입 구분 시스템](../../CLAUDE.md#프로젝트-타입-구분-시스템)
+```
+
+#### 4. 기술 스택 검증 (권장)
+package.json 기반 자동 감지 결과를 기록합니다.
+
+```markdown
+## ✅ 기술 스택 검증
+
+**자동 감지 결과** (package.json 기준):
+- ✅ WebView 타입 확인됨
+- ✅ TDS Mobile 사용 올바름
+- ✅ 필수 의존성 설치됨: react, react-dom, @emotion/react
+```
+
+### 📚 상세 가이드
+
+**전체 표준 규칙**: [STANDARD_RULES.md](STANDARD_RULES.md)
+- 필수 규칙 (MUST): UX Writing, 프로젝트 타입 구분, 언어 규칙 등
+- 권장 규칙 (SHOULD): Bedrock SDK 문서 확인, 버전 확인 등
+- 선택 규칙 (MAY): UI 라이브러리 하이브리드 사용 등
+
+**참조 예시**: [project/ROULETTE/CLAUDE.md](project/ROULETTE/CLAUDE.md)
+- ROULETTE 프로젝트는 모든 필수 섹션을 포함한 좋은 예시입니다
 
 ---
 
