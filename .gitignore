@@ -16,3 +16,6 @@ url-list.txt
 # 의존성
 node_modules/
 docs_backup_*/
+
+# 개발 프로젝트 (개별 관리)
+project/
