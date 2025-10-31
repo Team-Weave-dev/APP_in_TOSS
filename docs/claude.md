@@ -20,11 +20,16 @@
 ## 문서 현황
 
 **총 239개 문서**:
-- 가이드 문서: 78개
+- 가이드 문서: 78개 (claude.md 포함)
 - Bedrock SDK API: 94개
 - TDS Mobile: 67개
 
 **완료 상태**: 100% ✅
+
+**특이 사항**:
+- **08-monetization**: 가이드 문서는 온라인 참조 필요
+  - 로컬: claude.md (API 레퍼런스 안내)
+  - 온라인: https://developers-apps-in-toss.toss.im (상세 가이드)
 
 ---
 
